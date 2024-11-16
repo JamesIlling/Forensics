@@ -11,10 +11,11 @@ namespace Forensics.Registry.Test
         private const string CurrentVersion = @"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
 
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void OpenSubKey_OpensKey()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(VersionKey);
@@ -23,10 +24,11 @@ namespace Forensics.Registry.Test
         }
 
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void OpenSubKey_ShouldBeNull_IfKeyDoesNotExist()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(VersionKey);
@@ -36,10 +38,11 @@ namespace Forensics.Registry.Test
 
 
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetSubKeyNames()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(VersionKey);
@@ -48,10 +51,11 @@ namespace Forensics.Registry.Test
             entry.Should().Contain("Uninstall");
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetValueNames_ReturnNamesOfValuesForTheKey()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(VersionKey);
@@ -61,10 +65,11 @@ namespace Forensics.Registry.Test
         }
 
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetValue_String()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(CurrentVersion);
@@ -73,10 +78,11 @@ namespace Forensics.Registry.Test
             entry.Should().Contain(@"C:\WINDOWS");
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetValue_UnknownValue()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(CurrentVersion);
@@ -85,10 +91,11 @@ namespace Forensics.Registry.Test
             entry.Should().BeNull();
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetGuidValue_UnknownValue()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(CurrentVersion);
@@ -97,10 +104,11 @@ namespace Forensics.Registry.Test
             entry.Should().BeNull();
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetGuidValue_WrongType()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(CurrentVersion);
@@ -109,10 +117,11 @@ namespace Forensics.Registry.Test
             entry.Should().BeNull();
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetGuidValue_ReturnsGuid()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(CurrentVersion);
@@ -121,10 +130,11 @@ namespace Forensics.Registry.Test
             entry.Should().Be(new Guid("ffffffff-ffff-ffff-ffff-ffffffffffff"));
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetValue_Dword()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(CurrentVersion);
@@ -133,10 +143,11 @@ namespace Forensics.Registry.Test
             entry.Should().Contain("10");
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetValue_Binary()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(CurrentVersion);
@@ -145,10 +156,11 @@ namespace Forensics.Registry.Test
             entry.Should().Contain(@"A40000000300000030303333312D32303330302D30303030302D414132313900F00C00005B54485D5831392D39383830340000000000000000000000000000000000000000000000B555666323AD12670300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000873E826B");
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetValue_ExpandString()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(VersionKey);
@@ -157,10 +169,11 @@ namespace Forensics.Registry.Test
             entry.Should().Contain(@"C:\Program Files");
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetValue_MultiString()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registryBuilder = new RegistryBuilder();
 
             var wrapper = registryBuilder.GetRegistry(@"HKLM\SOFTWARE\Microsoft\Windows\TenantRestrictions\TenantRestrictionsList");

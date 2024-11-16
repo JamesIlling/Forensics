@@ -9,7 +9,7 @@ namespace Forensics.Registry.Test
     {
         private const string RootRegistryKey = @"HKLM\SYSTEM\CurrentControlSet\Enum\USB";
 
-        [Theory]
+        [SkippableTheory]
         [SupportedOSPlatform("Windows")]
         [InlineData(RootRegistryKey, "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USB")]
         [InlineData("HKCC", "HKEY_CURRENT_CONFIG")]
@@ -19,34 +19,38 @@ namespace Forensics.Registry.Test
         [InlineData("HKU", "HKEY_USERS")]
         public void GetRegistry_ReturnsExpectedKey(string keyName, string expected)
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registry = new RegistryBuilder();
             var key = registry.GetRegistry(keyName);
             key?.Name.Should().Be(expected);
         }
 
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetRegistry_ReturnsNullIfKeyDoesNotExist()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registry = new RegistryBuilder();
             var key = registry.GetRegistry(RootRegistryKey.Replace("USB", "USG"));
             key.Should().BeNull();
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetRegistry_ReturnsNullIfKeyIsNull()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registry = new RegistryBuilder();
             var key = registry.GetRegistry(null);
             key.Should().BeNull();
         }
 
-        [Fact]
+        [SkippableFact]
         [SupportedOSPlatform("Windows")]
         public void GetRegistry_ReturnsNullIfUnknownHive()
         {
+            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
             var registry = new RegistryBuilder();
             var key = registry.GetRegistry(RootRegistryKey.Replace("HKLM", "USG"));
             key.Should().BeNull();
