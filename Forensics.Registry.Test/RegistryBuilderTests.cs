@@ -4,6 +4,7 @@ using Forensics.Registry.RegistryAbstraction;
 
 namespace Forensics.Registry.Test
 {
+    [SupportedOSPlatform("Windows")]
     public class RegistryBuilderTests
     {
         private const string RootRegistryKey = @"HKLM\SYSTEM\CurrentControlSet\Enum\USB";

@@ -12,6 +12,7 @@ namespace Forensics.Registry.Test
 
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void OpenSubKey_OpensKey()
         {
             var registryBuilder = new RegistryBuilder();
@@ -23,6 +24,7 @@ namespace Forensics.Registry.Test
 
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void OpenSubKey_ShouldBeNull_IfKeyDoesNotExist()
         {
             var registryBuilder = new RegistryBuilder();
@@ -35,6 +37,7 @@ namespace Forensics.Registry.Test
 
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetSubKeyNames()
         {
             var registryBuilder = new RegistryBuilder();
@@ -46,6 +49,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetValueNames_ReturnNamesOfValuesForTheKey()
         {
             var registryBuilder = new RegistryBuilder();
@@ -58,6 +62,7 @@ namespace Forensics.Registry.Test
 
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetValue_String()
         {
             var registryBuilder = new RegistryBuilder();
@@ -69,6 +74,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetValue_UnknownValue()
         {
             var registryBuilder = new RegistryBuilder();
@@ -80,6 +86,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetGuidValue_UnknownValue()
         {
             var registryBuilder = new RegistryBuilder();
@@ -91,6 +98,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetGuidValue_WrongType()
         {
             var registryBuilder = new RegistryBuilder();
@@ -102,6 +110,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetGuidValue_ReturnsGuid()
         {
             var registryBuilder = new RegistryBuilder();
@@ -113,6 +122,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetValue_Dword()
         {
             var registryBuilder = new RegistryBuilder();
@@ -124,6 +134,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetValue_Binary()
         {
             var registryBuilder = new RegistryBuilder();
@@ -135,6 +146,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetValue_ExpandString()
         {
             var registryBuilder = new RegistryBuilder();
@@ -146,6 +158,7 @@ namespace Forensics.Registry.Test
         }
 
         [Fact]
+        [SupportedOSPlatform("Windows")]
         public void GetValue_MultiString()
         {
             var registryBuilder = new RegistryBuilder();
