@@ -30,8 +30,7 @@ namespace Forensics.Scanner
             services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
             services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
             services.AddSingleton<HttpClient>(); services.AddSingleton<IOutput, ConsoleDisplay>();
-            services.AddSingleton<IOutput, NetworkSend>(provider =>
-                new NetworkSend(provider.GetRequiredService<HttpClient>(), "https://localhost:7082/Scan"));
+
 
             services.AddSingleton<UsbScanner>();
         }
