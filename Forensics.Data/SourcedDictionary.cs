@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 
-namespace Forensics.Registry.SourcedDictionary;
+namespace Forensics.Data;
 
 public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<TKey, TValue>> where TValue : class?
 {
     private readonly List<SourcedKeyValuePair<TKey, TValue>> _data = [];
-
+    public Guid? Id { get; set; }
 
     public IEnumerator<SourcedKeyValuePair<TKey, TValue>> GetEnumerator()
     {
@@ -17,6 +17,10 @@ public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<T
         return GetEnumerator();
     }
 
+    public TValue? Get(TKey key)
+    {
+        return _data.Find(x => Equals(x.Key, key))?.Value;
+    }
 
     public void Add(string source, TKey key, TValue? value)
     {

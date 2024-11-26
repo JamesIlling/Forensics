@@ -1,9 +1,9 @@
 ﻿namespace Forensics.Registry.RegistryAbstraction;
 
-public interface IRegistry
+public interface IRegistryKey
 {
     string Name { get; }
-    IRegistry? OpenSubKey(string subKeyName);
+    IRegistryKey? OpenSubKey(string subKeyName);
     string? GetValue(string valueName);
     Guid? GetGuidValue(string valueName);
     string[] GetSubKeyNames();

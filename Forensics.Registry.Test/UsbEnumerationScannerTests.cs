@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Forensics.Registry.RegistryAbstraction;
 using Forensics.Registry.Scanners;
 using Moq;
@@ -20,53 +15,44 @@ namespace Forensics.Registry.Test
         }
 
 
-        private static Mock<IRegistry> SetUpRootKey()
+        private static Mock<IRegistryKey> SetUpRootKey()
         {
-            var mock = new Mock<IRegistry>();
+            var mock = new Mock<IRegistryKey>();
             mock.Setup(x => x.Name).Returns("HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB");
             mock.Setup(x => x.GetSubKeyNames()).Returns(["ROOT_HUB30"]);
             mock.Setup(x => x.OpenSubKey(It.IsAny<string>())).Returns(SetUpDeviceKey().Object);
             return mock;
         }
 
-        private static Mock<IRegistry> SetUpDeviceKey()
+        private static Mock<IRegistryKey> SetUpDeviceKey()
         {
-            var mock = new Mock<IRegistry>();
+            var mock = new Mock<IRegistryKey>();
             mock.Setup(x => x.Name).Returns("HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB\\ROOT_HUB30");
             mock.Setup(x => x.GetSubKeyNames()).Returns(["4&92b3c53&0&0"]);
             mock.Setup(x => x.OpenSubKey(It.IsAny<string>())).Returns(SetUpDeviceInstanceKey().Object);
             return mock;
         }
 
-        private static Mock<IRegistry> SetUpDeviceInstanceKey()
+        private static Mock<IRegistryKey> SetUpDeviceInstanceKey()
         {
-            var mock = new Mock<IRegistry>();
+            var mock = new Mock<IRegistryKey>();
             mock.Setup(x => x.Name).Returns("HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB\\ROOT_HUB30\\4&92b3c53&0&0");
-
-            mock.Setup(x => x.GetGuidValue(UsbEnumerationScanner.ClassGuid))
-                .Returns(new Guid("{36fc9e60-c465-11cf-8056-444553540000}"));
-            mock.Setup(x => x.GetValue(UsbEnumerationScanner.HardwareId)).Returns(
+            mock.Setup(x => x.GetValueNames()).Returns(["HardwareId"]);
+            mock.Setup(x => x.GetValue("HardwareId")).Returns(
                 "USB\\ROOT_HUB30&VID8086&PIDA2AF&REV0000, USB\\ROOT_HUB30&VID8086&PIDA2AF, USB\\ROOT_HUB30");
-            mock.Setup(x => x.GetValue(UsbEnumerationScanner.DeviceInstance))
-                .Returns("HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB\\ROOT_HUB30\\4&92b3c53&0&0");
-            mock.Setup(x => x.GetValue(UsbEnumerationScanner.Service)).Returns("USBHUB3");
-            mock.Setup(x => x.GetValue(UsbEnumerationScanner.FriendlyName)).Returns("Test");
-            mock.Setup(x => x.GetValue(UsbEnumerationScanner.ContainerId)).Returns("{00000000-0000-0000-ffff-ffffffffffff}");
             return mock;
         }
 
 
         [Theory]
-        [InlineData(UsbEnumerationScanner.HardwareId,
+        [InlineData("HardwareId",
             "USB\\ROOT_HUB30&VID8086&PIDA2AF&REV0000, USB\\ROOT_HUB30&VID8086&PIDA2AF, USB\\ROOT_HUB30")]
-        [InlineData(UsbEnumerationScanner.VendorId, "8086")]
-        [InlineData(UsbEnumerationScanner.ProductId, "A2AF")]
-        [InlineData(UsbEnumerationScanner.Revision, "0000")]
-        [InlineData(UsbEnumerationScanner.InterfaceId, null)]
-        [InlineData(UsbEnumerationScanner.DeviceInstance, "4&92b3c53&0&0")]
-        [InlineData(UsbEnumerationScanner.Service, "USBHUB3")]
-        [InlineData(UsbEnumerationScanner.FriendlyName, "Test")]
-        [InlineData(UsbEnumerationScanner.ContainerId, "{00000000-0000-0000-ffff-ffffffffffff}")]
+
+        [InlineData("DeviceTypeId",
+            "ROOT_HUB30")]
+
+        [InlineData("DeviceInstanceId",
+            "4&92b3c53&0&0\"")]
 
         public void Scan_AddsExpectedProperties(string key, string? value)
         {

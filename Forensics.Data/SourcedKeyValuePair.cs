@@ -1,4 +1,4 @@
-﻿namespace Forensics.Registry.SourcedDictionary;
+﻿namespace Forensics.Data;
 
 public record SourcedKeyValuePair<TKey, TValue>
 {

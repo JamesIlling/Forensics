@@ -2,5 +2,5 @@
 
 public interface IRegistryBuilder
 {
-    IRegistry? GetRegistry(string key);
+    IRegistryKey? GetRegistry(string key);
 }

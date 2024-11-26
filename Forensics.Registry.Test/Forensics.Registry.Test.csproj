@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Forensics.Data\Forensics.Data.csproj" />
     <ProjectReference Include="..\Forensics.Registry\Forensics.Registry.csproj" />
   </ItemGroup>
 

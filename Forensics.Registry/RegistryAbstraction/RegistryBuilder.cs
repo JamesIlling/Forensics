@@ -8,7 +8,7 @@ public class RegistryBuilder : IRegistryBuilder
     private const char Separator = '\\';
 
     [SupportedOSPlatform("Windows")]
-    public IRegistry? GetRegistry(string? key)
+    public IRegistryKey? GetRegistry(string? key)
     {
         if (key == null)
         {
@@ -46,6 +46,6 @@ public class RegistryBuilder : IRegistryBuilder
             }
         }
 
-        return new RegistryKeyWrapper(registryKey);
+        return new RegistryKeyKeyWrapper(registryKey);
     }
 }
