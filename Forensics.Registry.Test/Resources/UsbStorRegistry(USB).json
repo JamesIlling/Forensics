@@ -1,0 +1,164 @@
+{
+  "Registry": {
+    "Name": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\",
+    "Values": [],
+    "SubKeys": [
+      {
+        "Name": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\Disk\u0026Ven_IronKey\u0026Prod_Secure_Drive\u0026Rev_2.08\\",
+        "Values": [],
+        "SubKeys": [
+          {
+            "Name": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\Disk\u0026Ven_IronKey\u0026Prod_Secure_Drive\u0026Rev_2.08\\00512973\u00261",
+            "SubKeys": [
+              {
+                "Name": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\Disk\u0026Ven_IronKey\u0026Prod_Secure_Drive\u0026Rev_2.08\\00512973\u00261\\Device Parameters",
+                "SubKeys": [
+                  {
+                    "Name": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\Disk\u0026Ven_IronKey\u0026Prod_Secure_Drive\u0026Rev_2.08\\00512973\u00261\\Device Parameters\\MediaChangeNotification",
+                    "SubKeys": [
+                    ],
+                    "Values": [
+                    ]
+                  },
+                  {
+                    "Name": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\Disk\u0026Ven_IronKey\u0026Prod_Secure_Drive\u0026Rev_2.08\\00512973\u00261\\Device Parameters\\Partmgr",
+                    "SubKeys": [
+                    ],
+                    "Values": [
+                      {
+                        "Name": "DiskId",
+                        "Value": "{dce3b582-016e-11ef-9804-9cb6d01df8b8}"
+                      },
+                      {
+                        "Name": "Attributes",
+                        "Value": "0"
+                      },
+                      {
+                        "Name": "PartitionTableCache",
+                        "Value": "000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+                      },
+                      {
+                        "Name": "AttributesTableCache",
+                        "Value": "A2A0D0EBE5B9334487C068B6B72699C70000000000000000"
+                      }
+                    ]
+                  }
+                ],
+                "Values": [
+                ]
+              }
+            ],
+            "Values": [
+              {
+                "Name": "DeviceDesc",
+                "Value": "@disk.inf,%disk_devdesc%;Disk drive"
+              },
+              {
+                "Name": "Capabilities",
+                "Value": "16"
+              },
+              {
+                "Name": "Address",
+                "Value": "4"
+              },
+              {
+                "Name": "ContainerID",
+                "Value": "{4f93c18c-029b-528e-a562-7d373509fedd}"
+              },
+              {
+                "Name": "HardwareID",
+                "Value": "{USBSTOR\\DiskIronKey_Secure_Drive____2.08}, {USBSTOR\\DiskIronKey_Secure_Drive____}, {USBSTOR\\DiskIronKey_}, {USBSTOR\\IronKey_Secure_Drive____2}, {IronKey_Secure_Drive____2}, {USBSTOR\\GenDisk}, {GenDisk}"
+              },
+              {
+                "Name": "CompatibleIDs",
+                "Value": "{USBSTOR\\Disk}, {USBSTOR\\RAW}, {GenDisk}"
+              },
+              {
+                "Name": "ClassGUID",
+                "Value": "{4d36e967-e325-11ce-bfc1-08002be10318}"
+              },
+              {
+                "Name": "Service",
+                "Value": "disk"
+              },
+              {
+                "Name": "Driver",
+                "Value": "{4d36e967-e325-11ce-bfc1-08002be10318}\\0009"
+              },
+              {
+                "Name": "Mfg",
+                "Value": "@disk.inf,%genmanufacturer%;(Standard disk drives)"
+              },
+              {
+                "Name": "FriendlyName",
+                "Value": "IronKey Secure Drive USB Device"
+              },
+              {
+                "Name": "ConfigFlags",
+                "Value": "0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ExpectedValues": [
+    {
+      "Name": "Capabilities",
+      "Value": "16"
+    },
+    {
+      "Name": "Address",
+      "Value": "4"
+    },
+    {
+      "Name": "ClassGUID",
+      "Value": "{4d36e967-e325-11ce-bfc1-08002be10318}"
+    },
+    {
+      "Name": "CompatibleIDs",
+      "Value": "{USBSTOR\\Disk}, {USBSTOR\\RAW}, {GenDisk}"
+    },
+    {
+      "Name": "ConfigFlags",
+      "Value": "0"
+    },
+    {
+      "Name": "ContainerID",
+      "Value": "{4f93c18c-029b-528e-a562-7d373509fedd}"
+    },
+    {
+      "Name": "DeviceDesc",
+      "Value": "@disk.inf,%disk_devdesc%;Disk drive"
+    },
+    {
+      "Name": "DeviceId",
+      "Value": "Disk&Ven_IronKey&Prod_Secure_Drive&Rev_2.08"
+    },
+    {
+      "Name": "DeviceInstanceId",
+      "Value": "00512973&1"
+    },
+    {
+      "Name": "FriendlyName",
+      "Value": "IronKey Secure Drive USB Device"
+    },
+    {
+      "Name": "HardwareID",
+      "Value": "{USBSTOR\\DiskIronKey_Secure_Drive____2.08}, {USBSTOR\\DiskIronKey_Secure_Drive____}, {USBSTOR\\DiskIronKey_}, {USBSTOR\\IronKey_Secure_Drive____2}, {IronKey_Secure_Drive____2}, {USBSTOR\\GenDisk}, {GenDisk}"
+    },
+    {
+      "Name": "Mfg",
+      "Value": "@disk.inf,%genmanufacturer%;(Standard disk drives)"
+    },
+    {
+      "Name": "Service",
+      "Value": "disk"
+    },
+    {
+      "Name": "DiskId",
+      "Value": "{dce3b582-016e-11ef-9804-9cb6d01df8b8}"
+    }
+  ]
+}

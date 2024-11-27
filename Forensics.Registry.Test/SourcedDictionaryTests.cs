@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Forensics.Registry.SourcedDictionary;
+using Forensics.Data;
 
 namespace Forensics.Registry.Test
 {

@@ -1,6 +1,6 @@
-﻿using Forensics.Registry.RegistryAbstraction;
+﻿using Forensics.Data;
+using Forensics.Registry.RegistryAbstraction;
 using Forensics.Registry.Scanners;
-using Forensics.Registry.SourcedDictionary;
 using Forensics.Scanner.Output;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,11 +14,13 @@ namespace Forensics.Scanner
             ConfigureServices(services);
             var provider = services.BuildServiceProvider();
 
-            var scanner = provider.GetRequiredService<IScan<SourcedDictionary<string, string?>>>();
-
-            var results = new ScanResults { DeviceList = scanner.Scan() };
-            var output = provider.GetRequiredService<IOutput>();
-            output.Output(results);
+            var scanner = provider.GetRequiredService<UsbScanner>();
+            var results = scanner.Scan();
+            var outputs = provider.GetRequiredService<IEnumerable<IOutput>>();
+            foreach (var output in outputs)
+            {
+                output.Output(results);
+            }
         }
 
         private static void ConfigureServices(ServiceCollection services)
@@ -26,7 +28,11 @@ namespace Forensics.Scanner
 
             services.AddSingleton<IRegistryBuilder, RegistryBuilder>();
             services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
-            services.AddSingleton<IOutput, ConsoleDisplay>();
+            services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
+            services.AddSingleton<HttpClient>(); services.AddSingleton<IOutput, ConsoleDisplay>();
+
+
+            services.AddSingleton<UsbScanner>();
         }
     }
 }

@@ -30,11 +30,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Forensics.Data\Forensics.Data.csproj" />
     <ProjectReference Include="..\Forensics.Registry\Forensics.Registry.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Resources\HardwareIdTestData.tsv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\UsbDeviceRegistry.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\UsbStorRegistry(USB).json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\UsbStorRegistry(CDRom).json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

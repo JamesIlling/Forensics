@@ -4,47 +4,32 @@ using Microsoft.Win32;
 namespace Forensics.Registry.RegistryAbstraction;
 
 [SupportedOSPlatform("windows")]
-public class RegistryKeyWrapper : IRegistry
+public class RegistryKeyKeyWrapper : IRegistryKey
 {
     private readonly RegistryKey? _key;
 
-    public RegistryKeyWrapper(RegistryKey? key)
+    public RegistryKeyKeyWrapper(RegistryKey? key)
     {
         _key = key;
     }
 
     public string Name => _key?.Name ?? "";
 
-    public IRegistry? OpenSubKey(string subKeyName)
+    public IRegistryKey? OpenSubKey(string subKeyName)
     {
         if (_key != null && _key.GetSubKeyNames().Contains(subKeyName))
         {
-            return new RegistryKeyWrapper(_key.OpenSubKey(subKeyName));
+            try
+            {
+                return new RegistryKeyKeyWrapper(_key.OpenSubKey(subKeyName));
+            }
+            catch (System.Security.SecurityException)
+            {
+                return null;
+            }
         }
 
         return null;
-    }
-
-    public Guid? GetGuidValue(string valueName)
-    {
-        if (!GetValueNames().Contains(valueName))
-        {
-            return null;
-        }
-
-        var kind = _key?.GetValueKind(valueName);
-        if (kind != RegistryValueKind.String)
-        {
-            return null;
-        }
-
-        var text = _key!.GetValue(valueName)?.ToString();
-        if (text == null)
-        {
-            return null;
-        }
-
-        return new Guid(text);
     }
 
     public string? GetValue(string? valueName)

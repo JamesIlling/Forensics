@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Forensics.TestData.Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "Registry -r \"HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\Disk&Ven_IronKey&Prod_Secure_Drive&Rev_2.08\\00512973&1\" -o \"UsbStorRegistry(USB).json\""
+    }
+  }
+}

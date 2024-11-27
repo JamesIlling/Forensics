@@ -1,5 +1,5 @@
-﻿using Forensics.Registry.RegistryAbstraction;
-using Forensics.Registry.SourcedDictionary;
+﻿using Forensics.Data;
+using Forensics.Registry.RegistryAbstraction;
 
 namespace Forensics.Registry.Scanners;
 
@@ -14,54 +14,38 @@ public class UsbEnumerationScanner : IScan<SourcedDictionary<string, string?>>
 
     }
 
-    public const string ClassGuid = "ClassGUID";
-    public const string HardwareId = "HardwareID";
-    public const string VendorId = "VendorId";
-    public const string ProductId = "ProductId";
-    public const string Revision = "Revision";
-    public const string InterfaceId = "InterfaceId";
-    public const string DeviceInstance = "DeviceInstanceId";
-    public const string Service = "Service";
-    public const string FriendlyName = "FriendlyName";
-    public const string ContainerId = "ContainerID";
-    private const string UshortHex = "X04";
-    private const string ByteHex = "X02";
+    private const string DeviceTypeId = "DeviceTypeId";
+    private const string DeviceInstanceId = "DeviceInstanceId";
 
+
+    public string Name => "UsbEnumerationScanner";
 
     public List<SourcedDictionary<string, string?>> Scan()
     {
         var located = new List<SourcedDictionary<string, string?>>();
         var rootKey = _registryBuilder.GetRegistry(RootRegistryKey);
-        foreach (var subKeyName in rootKey?.GetSubKeyNames() ?? [])
+        foreach (var deviceTypeName in rootKey?.GetSubKeyNames() ?? [])
         {
             //This is the top level key (DeviceClass)
             //e.g. HKLM\SYSTEM\CurrentControlSet\Enum\USB\ROOT_HUB30\
-            var enumeratedKey = rootKey?.OpenSubKey(subKeyName);
-            if (enumeratedKey != null)
+            var deviceTypeKey = rootKey?.OpenSubKey(deviceTypeName);
+            if (deviceTypeKey != null)
             {
-                foreach (var enumeratedSubKeyName in enumeratedKey.GetSubKeyNames())
+                foreach (var deviceInstanceName in deviceTypeKey.GetSubKeyNames())
                 {
                     //This is the key we will want to read the values from (DeviceInstance)
                     //e.g. HKLM\SYSTEM\CurrentControlSet\Enum\USB\ROOT_HUB30\4&92b3c53&0&0
-                    var enumeratedSubKey = enumeratedKey.OpenSubKey(enumeratedSubKeyName);
+                    var deviceInstanceKey = deviceTypeKey.OpenSubKey(deviceInstanceName);
                     var device = new SourcedDictionary<string, string?>();
-                    if (enumeratedSubKey != null)
+                    if (deviceInstanceKey != null)
                     {
-                        device.Add(enumeratedSubKey.Name, ClassGuid,
-                            enumeratedSubKey.GetGuidValue(ClassGuid).ToString());
-                        device.Add(enumeratedSubKey.Name, HardwareId, enumeratedSubKey.GetValue(HardwareId));
-                        device.Add(enumeratedSubKey.Name, VendorId,
-                            enumeratedSubKey.GetValue(HardwareId).ParseVendorId()?.ToString(UshortHex));
-                        device.Add(enumeratedSubKey.Name, ProductId,
-                            enumeratedSubKey.GetValue(HardwareId).ParseProductId()?.ToString(UshortHex));
-                        device.Add(enumeratedSubKey.Name, Revision,
-                            enumeratedSubKey.GetValue(HardwareId).ParseRevision()?.ToString(UshortHex));
-                        device.Add(enumeratedSubKey.Name, InterfaceId,
-                            enumeratedSubKey.GetValue(HardwareId).ParseInterface()?.ToString(ByteHex));
-                        device.Add(enumeratedSubKey.Name, DeviceInstance, enumeratedSubKeyName);
-                        device.Add(enumeratedSubKey.Name, Service, enumeratedSubKey.GetValue(Service));
-                        device.Add(enumeratedSubKey.Name, FriendlyName, enumeratedSubKey.GetValue(FriendlyName));
-                        device.Add(enumeratedSubKey.Name, ContainerId, enumeratedSubKey.GetValue(ContainerId));
+                        device.Add(deviceTypeKey.Name, DeviceTypeId, deviceTypeName);
+                        device.Add(deviceInstanceKey.Name, DeviceInstanceId, deviceInstanceName);
+                        foreach (var valueName in deviceInstanceKey.GetValueNames())
+                        {
+                            device.Add(deviceInstanceKey.Name, valueName, deviceInstanceKey.GetValue(valueName)!);
+                        }
+
                         located.Add(device);
                     }
                 }

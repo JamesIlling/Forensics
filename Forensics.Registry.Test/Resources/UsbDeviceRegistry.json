@@ -1,0 +1,40 @@
+{
+  "Registry": {
+    "Name": "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
+    "Values": [],
+    "SubKeys": [
+      {
+        "Name": "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB\\ROOT_HUB30",
+        "Values": [],
+        "SubKeys": [
+          {
+            "Name": "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB\\ROOT_HUB30\\4&92b3c53&0&0",
+            "Values": [
+              {
+                "Name": "HardwareId",
+                "Value": "USB\\ROOT_HUB30&VID8086&PIDA2AF&REV0000, USB\\ROOT_HUB30&VID8086&PIDA2AF, USB\\ROOT_HUB30"
+              }
+            ],
+            "SubKeys": []
+
+          }
+        ]
+      }
+    ]
+  },
+  "ExpectedValues": [
+    {
+      "Name": "HardwareId",
+      "Value": "USB\\ROOT_HUB30&VID8086&PIDA2AF&REV0000, USB\\ROOT_HUB30&VID8086&PIDA2AF, USB\\ROOT_HUB30"
+    },
+
+    {
+      "Name": "DeviceTypeId",
+      "Value": "ROOT_HUB30"
+    },
+    {
+      "Name": "DeviceInstanceId",
+      "Value": "4&92b3c53&0&0"
+    }
+  ]
+}
