@@ -93,45 +93,6 @@ namespace Forensics.Registry.Test
 
         [SkippableFact]
         [SupportedOSPlatform("Windows")]
-        public void GetGuidValue_UnknownValue()
-        {
-            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
-            var registryBuilder = new RegistryBuilder();
-
-            var wrapper = registryBuilder.GetRegistry(CurrentVersion);
-            var entry = wrapper?.GetGuidValue("DoesNotExist");
-
-            entry.Should().BeNull();
-        }
-
-        [SkippableFact]
-        [SupportedOSPlatform("Windows")]
-        public void GetGuidValue_WrongType()
-        {
-            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
-            var registryBuilder = new RegistryBuilder();
-
-            var wrapper = registryBuilder.GetRegistry(CurrentVersion);
-            var entry = wrapper?.GetGuidValue("CurrentMajorVersionNumber");
-
-            entry.Should().BeNull();
-        }
-
-        [SkippableFact]
-        [SupportedOSPlatform("Windows")]
-        public void GetGuidValue_ReturnsGuid()
-        {
-            Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);
-            var registryBuilder = new RegistryBuilder();
-
-            var wrapper = registryBuilder.GetRegistry(CurrentVersion);
-            var entry = wrapper?.GetGuidValue("BuildGUID");
-
-            entry.Should().Be(new Guid("ffffffff-ffff-ffff-ffff-ffffffffffff"));
-        }
-
-        [SkippableFact]
-        [SupportedOSPlatform("Windows")]
         public void GetValue_Dword()
         {
             Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Win32NT);

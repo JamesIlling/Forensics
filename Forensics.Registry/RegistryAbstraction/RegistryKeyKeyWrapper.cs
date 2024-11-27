@@ -19,32 +19,19 @@ public class RegistryKeyKeyWrapper : IRegistryKey
     {
         if (_key != null && _key.GetSubKeyNames().Contains(subKeyName))
         {
-            return new RegistryKeyKeyWrapper(_key.OpenSubKey(subKeyName));
+            try
+            {
+                return new RegistryKeyKeyWrapper(_key.OpenSubKey(subKeyName));
+            }
+            catch (System.Security.SecurityException ex)
+
+            {
+                // Unable to access key;
+                return null;
+            }
         }
 
         return null;
-    }
-
-    public Guid? GetGuidValue(string valueName)
-    {
-        if (!GetValueNames().Contains(valueName))
-        {
-            return null;
-        }
-
-        var kind = _key?.GetValueKind(valueName);
-        if (kind != RegistryValueKind.String)
-        {
-            return null;
-        }
-
-        var text = _key!.GetValue(valueName)?.ToString();
-        if (text == null)
-        {
-            return null;
-        }
-
-        return new Guid(text);
     }
 
     public string? GetValue(string? valueName)
