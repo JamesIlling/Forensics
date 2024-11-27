@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Runtime.Versioning;
+using FluentAssertions;
 using Forensics.Registry.RegistryAbstraction;
 using Forensics.Registry.Scanners;
 using Forensics.Registry.Test.TestDataClasses;
@@ -6,6 +7,7 @@ using Moq;
 
 namespace Forensics.Registry.Test
 {
+    [SupportedOSPlatform("Windows")]
     public class UsbStorageEnumerationScannerTests
     {
         [Theory]
@@ -13,16 +15,16 @@ namespace Forensics.Registry.Test
         [FileData(typeof(RegistryJsonFileReader), "Resources/UsbStorRegistry(USB).json")]
         public void Scan_AddsExpectedProperties(IMock<IRegistryBuilder> registry, string key, string? value)
         {
-            var usbscanner = new UsbStorageEnumerationScanner(registry.Object);
+            var usbScanner = new UsbStorageEnumerationScanner(registry.Object);
 
-            var results = usbscanner.Scan();
+            var results = usbScanner.Scan();
             results.Count.Should().Be(1);
             var device = results[0];
-            device.First().Source.ToLower().Should().Contain("\\USBStor\\".ToLower());
+            device.First().Source!.ToLower().Should().Contain("\\USBStor\\".ToLower());
 
-            var propertyKey = device.FirstOrDefault(x => x.Key == key);
+            var propertyKey = device.Get(key);
             propertyKey.Should().NotBeNull();
-            propertyKey.Value.Should().Be(value);
+            propertyKey!.Should().Be(value);
         }
     }
 }

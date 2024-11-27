@@ -23,10 +23,8 @@ public class RegistryKeyKeyWrapper : IRegistryKey
             {
                 return new RegistryKeyKeyWrapper(_key.OpenSubKey(subKeyName));
             }
-            catch (System.Security.SecurityException ex)
-
+            catch (System.Security.SecurityException)
             {
-                // Unable to access key;
                 return null;
             }
         }

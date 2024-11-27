@@ -19,8 +19,8 @@ namespace Forensics.Registry.Test
             var results = usbscanner.Scan();
             results.Count.Should().Be(1);
             var device = results[0];
-            device.First().Source.ToLower().Should().Contain("\\USB\\".ToLower());
-            device.FirstOrDefault(x => x.Key == key)?.Value.Should().Be(value);
+            device.First().Source?.ToLower().Should().Contain("\\USB\\".ToLower());
+            device.Get(key).Should().Be(value);
         }
     }
 }

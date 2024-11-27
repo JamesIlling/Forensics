@@ -2,7 +2,7 @@
 {
     public class RegistryJsonTestFile
     {
-        public JsonRegistryEntry Registry { get; set; }
-        public List<JsonRegistryValue> ExpectedValues { get; set; }
+        public required JsonRegistryEntry Registry { get; set; }
+        public required List<JsonRegistryValue> ExpectedValues { get; set; }
     }
 }

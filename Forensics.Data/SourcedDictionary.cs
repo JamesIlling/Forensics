@@ -5,7 +5,6 @@ namespace Forensics.Data;
 public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<TKey, TValue>> where TValue : class?
 {
     private readonly List<SourcedKeyValuePair<TKey, TValue>> _data = [];
-    public Guid? Id { get; set; }
 
     public IEnumerator<SourcedKeyValuePair<TKey, TValue>> GetEnumerator()
     {

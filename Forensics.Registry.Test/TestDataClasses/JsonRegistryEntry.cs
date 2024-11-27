@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Forensics.Registry.RegistryAbstraction;
+﻿using Forensics.Registry.RegistryAbstraction;
 using Moq;
 
 namespace Forensics.Registry.Test.TestDataClasses
@@ -7,12 +6,12 @@ namespace Forensics.Registry.Test.TestDataClasses
     public class JsonRegistryEntry
     {
 
-        public string Name { get; set; }
-        public List<JsonRegistryEntry> SubKeys { get; set; }
-        public List<JsonRegistryValue> Values { get; set; }
+        public required string Name { get; set; }
+        public required List<JsonRegistryEntry> SubKeys { get; set; }
+        public required List<JsonRegistryValue> Values { get; set; }
 
 
-
+        private const char Separator = '\\';
         private static void BuildKey(JsonRegistryEntry key, Dictionary<string, IMock<IRegistryKey>> keys)
         {
             foreach (var child in key.SubKeys)
@@ -20,13 +19,12 @@ namespace Forensics.Registry.Test.TestDataClasses
                 BuildKey(child, keys);
             }
 
-
             var mock = new Mock<IRegistryKey>();
             mock.Setup(x => x.Name).Returns(key.Name);
 
-            var subkeyNames = key.SubKeys.Select(x => x.Name.Split('\\', StringSplitOptions.RemoveEmptyEntries).Last()).ToArray();
-            mock.Setup(x => x.GetSubKeyNames()).Returns(subkeyNames);
-            foreach (var name in subkeyNames)
+            var subKeyNames = key.SubKeys.Select(x => GetShortName(x.Name)).ToArray();
+            mock.Setup(x => x.GetSubKeyNames()).Returns(subKeyNames);
+            foreach (var name in subKeyNames)
             {
                 mock.Setup(x => x.OpenSubKey(name)).Returns(keys[name].Object);
             }
@@ -37,7 +35,7 @@ namespace Forensics.Registry.Test.TestDataClasses
             {
                 mock.Setup(x => x.GetValue(value.Name)).Returns(value.Value);
             }
-            keys.Add(key.Name.Split('\\', StringSplitOptions.RemoveEmptyEntries).Last(), mock);
+            keys.Add(GetShortName(key.Name), mock);
         }
 
         public IMock<IRegistryBuilder> BuildMock()
@@ -46,8 +44,13 @@ namespace Forensics.Registry.Test.TestDataClasses
             BuildKey(this, mocks);
 
             var builder = new Mock<IRegistryBuilder>();
-            builder.Setup(x => x.GetRegistry(It.IsAny<string>())).Returns(mocks[Name.Split('\\', StringSplitOptions.RemoveEmptyEntries).Last()].Object);
+            builder.Setup(x => x.GetRegistry(It.IsAny<string>())).Returns(mocks[GetShortName(Name)].Object);
             return builder;
+        }
+
+        private static string GetShortName(string longName)
+        {
+            return longName.Split(Separator, StringSplitOptions.RemoveEmptyEntries)[^1];
         }
     }
 }
