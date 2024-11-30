@@ -36,6 +36,18 @@ namespace Forensics.Data.Test
         }
 
         [Fact]
+        public void MountedDevice_IsSetDuringInit()
+        {
+            var storageList = new List<SourcedDictionary<string, string?>>();
+            var scan = new ScanResults()
+            {
+                MountedDevices = storageList
+            };
+
+            scan.MountedDevices.Should().AllBeEquivalentTo(storageList);
+        }
+
+        [Fact]
         public void DeviceList_IsSetDuringInit()
         {
             var deviceList = new List<SourcedDictionary<string, string?>>();

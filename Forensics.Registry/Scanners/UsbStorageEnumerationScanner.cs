@@ -32,24 +32,15 @@ namespace Forensics.Registry.Scanners
             var deviceTypesKeyNames = usbStore?.GetSubKeyNames() ?? [];
             foreach (var deviceType in deviceTypesKeyNames)
             {
-                var deviceTypeKey = usbStore?.OpenSubKey(deviceType);
-                if (deviceTypeKey == null)
-                {
-                    continue;
-                }
-
+                var deviceTypeKey = usbStore?.OpenSubKey(deviceType)!;
 
                 foreach (var deviceInstance in deviceTypeKey.GetSubKeyNames())
                 {
-                    var deviceInstanceKey = deviceTypeKey.OpenSubKey(deviceInstance);
-                    if (deviceInstanceKey == null)
-                    {
-                        continue;
-                    }
+                    var deviceInstanceKey = deviceTypeKey.OpenSubKey(deviceInstance)!;
 
                     var entry = new SourcedDictionary<string, string?>
                     {
-{                         deviceTypeKey.Name, "DeviceId", deviceType },
+{ deviceTypeKey.Name, "DeviceId", deviceType },
                         { deviceInstanceKey.Name, "DeviceInstanceId", deviceInstance }
                     };
 
@@ -74,12 +65,7 @@ namespace Forensics.Registry.Scanners
         private static void GetDiskId(IRegistryKey deviceKey, SourcedDictionary<string, string?> entry)
         {
             var deviceProperties = deviceKey.OpenSubKey(DeviceParameters);
-            var partManager = deviceProperties?.OpenSubKey(PartitionManagerSubKeyName);
-            if (partManager == null)
-            {
-                return;
-            }
-
+            var partManager = deviceProperties?.OpenSubKey(PartitionManagerSubKeyName)!;
             var diskId = partManager.GetValue(DiskIdValueName);
             entry.Add(partManager.Name, DiskIdProperty, diskId);
         }

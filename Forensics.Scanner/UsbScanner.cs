@@ -1,6 +1,5 @@
 ﻿using Forensics.Data;
 using Forensics.Registry.Scanners;
-using Forensics.Scanner.Output;
 
 namespace Forensics.Scanner
 {
@@ -22,7 +21,7 @@ namespace Forensics.Scanner
                 scannerResults.Add(scanner.Name, items);
             }
 
-            var results = new ScanResults { DeviceList = scannerResults["UsbEnumerationScanner"], StorageList = scannerResults["UsbStorageEnumerationScanner"] };
+            var results = new ScanResults { DeviceList = scannerResults["UsbEnumerationScanner"], StorageList = scannerResults["UsbStorageEnumerationScanner"], MountedDevices = scannerResults["MountedDevicesScanner"] };
             return results;
         }
     }
