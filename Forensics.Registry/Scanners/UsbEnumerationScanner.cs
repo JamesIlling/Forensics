@@ -6,16 +6,15 @@ namespace Forensics.Registry.Scanners;
 public class UsbEnumerationScanner : IScan<SourcedDictionary<string, string?>>
 {
     private const string RootRegistryKey = @"HKLM\SYSTEM\CurrentControlSet\Enum\USB";
+
+    private const string DeviceTypeId = "DeviceTypeId";
+    private const string DeviceInstanceId = "DeviceInstanceId";
     private readonly IRegistryBuilder _registryBuilder;
 
     public UsbEnumerationScanner(IRegistryBuilder registryBuilder)
     {
         _registryBuilder = registryBuilder;
-
     }
-
-    private const string DeviceTypeId = "DeviceTypeId";
-    private const string DeviceInstanceId = "DeviceInstanceId";
 
 
     public string Name => "UsbEnumerationScanner";

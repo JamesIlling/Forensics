@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using System.Runtime.Versioning;
+﻿using System.Runtime.Versioning;
 
 namespace Forensics.Registry.RegistryAbstraction;
 
@@ -33,6 +32,7 @@ public class RegistryBuilder : IRegistryBuilder
         {
             return null;
         }
+
         foreach (var folder in keyParts)
         {
             if (registryKey != null &&

@@ -23,6 +23,7 @@ internal class TestTsvOutput : IOutput
             line.AppendLine();
             lines.Add(line.ToString());
         }
+
         File.WriteAllLines("HardwareIdTestData.tsv", lines);
     }
 }

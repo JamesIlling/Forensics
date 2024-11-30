@@ -1,8 +1,7 @@
-﻿namespace Forensics.Registry.Test.TestDataClasses
+﻿namespace Forensics.Registry.Test.TestDataClasses;
+
+public class RegistryJsonTestFile
 {
-    public class RegistryJsonTestFile
-    {
-        public required JsonRegistryEntry Registry { get; set; }
-        public required List<JsonRegistryValue> ExpectedValues { get; set; }
-    }
+    public required List<JsonRegistryValue> ExpectedValues { get; set; }
+    public required JsonRegistryEntry Registry { get; set; }
 }
