@@ -4,11 +4,9 @@ using Xunit.Sdk;
 
 namespace Forensics.Registry.Test.TestDataClasses;
 
-
-[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class FileDataAttribute : DataAttribute
 {
-
     public FileDataAttribute(Type @class, string filePath, int column = 1)
     {
         Class = @class;
@@ -17,13 +15,14 @@ public class FileDataAttribute : DataAttribute
     }
 
     public Type Class { get; }
-    public string Path { get; }
     public int Column { get; }
+    public string Path { get; }
 
 
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
         if (Activator.CreateInstance(Class, [Path, Column]) is not IEnumerable<object[]> data)
+        {
             throw new ArgumentException(
                 string.Format(
                     CultureInfo.CurrentCulture,
@@ -33,8 +32,8 @@ public class FileDataAttribute : DataAttribute
                     testMethod.DeclaringType?.FullName
                 )
             );
+        }
 
         return data;
     }
 }
-
