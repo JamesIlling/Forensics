@@ -10,6 +10,13 @@ namespace Forensics.Registry.Test
     [SupportedOSPlatform("Windows")]
     public class UsbStorageEnumerationScannerTests
     {
+        [Fact]
+        public void Name_IsSet()
+        {
+            var usbscanner = new UsbStorageEnumerationScanner(new Mock<IRegistryBuilder>().Object);
+            usbscanner.Name.Should().Be(nameof(UsbStorageEnumerationScanner));
+        }
+
         [Theory]
         [FileData(typeof(RegistryJsonFileReader), "Resources/UsbStorRegistry(CDRom).json")]
         [FileData(typeof(RegistryJsonFileReader), "Resources/UsbStorRegistry(USB).json")]

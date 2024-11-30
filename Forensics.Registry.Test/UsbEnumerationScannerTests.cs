@@ -8,6 +8,12 @@ namespace Forensics.Registry.Test
 {
     public class UsbEnumerationScannerTests
     {
+        [Fact]
+        public void Name_IsSet()
+        {
+            var usbscanner = new UsbEnumerationScanner(new Mock<IRegistryBuilder>().Object);
+            usbscanner.Name.Should().Be(nameof(UsbEnumerationScanner));
+        }
 
         [Theory]
         [FileData(typeof(RegistryJsonFileReader), "Resources/UsbDeviceRegistry.json")]

@@ -38,6 +38,9 @@
     <None Update="Resources\HardwareIdTestData.tsv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\MountedDeviceRegistry.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\UsbDeviceRegistry.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

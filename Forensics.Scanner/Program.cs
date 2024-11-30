@@ -16,6 +16,7 @@ namespace Forensics.Scanner
 
             var scanner = provider.GetRequiredService<UsbScanner>();
             var results = scanner.Scan();
+
             var outputs = provider.GetRequiredService<IEnumerable<IOutput>>();
             foreach (var output in outputs)
             {
@@ -29,9 +30,8 @@ namespace Forensics.Scanner
             services.AddSingleton<IRegistryBuilder, RegistryBuilder>();
             services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
             services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
+            services.AddSingleton<IScan<SourcedDictionary<string, string?>>, MountedDevicesScanner>();
             services.AddSingleton<HttpClient>(); services.AddSingleton<IOutput, ConsoleDisplay>();
-
-
             services.AddSingleton<UsbScanner>();
         }
     }
