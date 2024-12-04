@@ -16,20 +16,11 @@ public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<T
         return GetEnumerator();
     }
 
-    public TValue? Get(TKey key)
-    {
-        return _data.Find(x => Equals(x.Key, key))?.Value;
-    }
-
-    public void Add(string source, TKey key, TValue? value)
-    {
-        var item = new SourcedKeyValuePair<TKey, TValue> { Key = key, Source = source, Value = value };
-        Add(item);
-    }
-
     public void Add(SourcedKeyValuePair<TKey, TValue> item)
     {
-        if (item.Source == null || item.Key is null || Equals(item.Value, null))
+        if (item.Source == null ||
+            item.Key is null ||
+            Equals(item.Value, null))
         {
             return;
         }
@@ -51,6 +42,7 @@ public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<T
         {
             _data.Remove(existing);
         }
+
         _data.Add(item);
     }
 
@@ -77,4 +69,15 @@ public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<T
 
     public int Count => _data.Count;
     public bool IsReadOnly => false;
+
+    public TValue? Get(TKey key)
+    {
+        return _data.Find(x => Equals(x.Key, key))?.Value;
+    }
+
+    public void Add(string source, TKey key, TValue? value)
+    {
+        var item = new SourcedKeyValuePair<TKey, TValue> { Key = key, Source = source, Value = value };
+        Add(item);
+    }
 }

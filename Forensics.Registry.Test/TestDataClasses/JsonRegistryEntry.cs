@@ -43,8 +43,13 @@ public class JsonRegistryEntry
         var mocks = new Dictionary<string, IMock<IRegistryKey>>();
         BuildKey(this, mocks);
 
+
         var builder = new Mock<IRegistryBuilder>();
-        builder.Setup(x => x.GetRegistry(It.IsAny<string>())).Returns(mocks[GetShortName(Name)].Object);
+        builder.SetupSequence(x => x.GetRegistry(It.IsAny<string>()))
+            .Returns(mocks[GetShortName(Name)].Object)
+            .Returns(() => null);
+
+
         return builder;
     }
 

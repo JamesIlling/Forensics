@@ -1,28 +1,32 @@
 ﻿using Forensics.Data;
 using Forensics.Registry.Scanners;
 
-namespace Forensics.Scanner
+namespace Forensics.Scanner;
+
+internal class UsbScanner
 {
-    internal class UsbScanner
+    private readonly List<IScan<SourcedDictionary<string, string?>>> _scanners;
+
+    public UsbScanner(IEnumerable<IScan<SourcedDictionary<string, string?>>> scanners)
     {
-        private readonly List<IScan<SourcedDictionary<string, string?>>> _scanners;
+        _scanners = scanners.ToList();
+    }
 
-        public UsbScanner(IEnumerable<IScan<SourcedDictionary<string, string?>>> scanners)
+    public ScanResults Scan()
+    {
+        var scannerResults = new Dictionary<string, List<SourcedDictionary<string, string?>>>();
+        foreach (var scanner in _scanners)
         {
-            _scanners = scanners.ToList();
+            var items = scanner.Scan();
+            scannerResults.Add(scanner.Name, items);
         }
 
-        public ScanResults Scan()
+        var results = new ScanResults
         {
-            var scannerResults = new Dictionary<string, List<SourcedDictionary<string, string?>>>();
-            foreach (var scanner in _scanners)
-            {
-                var items = scanner.Scan();
-                scannerResults.Add(scanner.Name, items);
-            }
-
-            var results = new ScanResults { DeviceList = scannerResults["UsbEnumerationScanner"], StorageList = scannerResults["UsbStorageEnumerationScanner"], MountedDevices = scannerResults["MountedDevicesScanner"] };
-            return results;
-        }
+            DeviceList = scannerResults["UsbEnumerationScanner"],
+            StorageList = scannerResults["UsbStorageEnumerationScanner"],
+            MountedDevices = scannerResults["MountedDevicesScanner"]
+        };
+        return results;
     }
 }

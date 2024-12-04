@@ -4,35 +4,34 @@ using Forensics.Registry.Scanners;
 using Forensics.Scanner.Output;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Forensics.Scanner
+namespace Forensics.Scanner;
+
+internal static class Program
 {
-    internal static class Program
+    private static void Main()
     {
-        private static void Main()
+        var services = new ServiceCollection();
+        ConfigureServices(services);
+        var provider = services.BuildServiceProvider();
+
+        var scanner = provider.GetRequiredService<UsbScanner>();
+        var results = scanner.Scan();
+
+        var outputs = provider.GetRequiredService<IEnumerable<IOutput>>();
+        foreach (var output in outputs)
         {
-            var services = new ServiceCollection();
-            ConfigureServices(services);
-            var provider = services.BuildServiceProvider();
-
-            var scanner = provider.GetRequiredService<UsbScanner>();
-            var results = scanner.Scan();
-
-            var outputs = provider.GetRequiredService<IEnumerable<IOutput>>();
-            foreach (var output in outputs)
-            {
-                output.Output(results);
-            }
+            output.Output(results);
         }
+    }
 
-        private static void ConfigureServices(ServiceCollection services)
-        {
-
-            services.AddSingleton<IRegistryBuilder, RegistryBuilder>();
-            services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
-            services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
-            services.AddSingleton<IScan<SourcedDictionary<string, string?>>, MountedDevicesScanner>();
-            services.AddSingleton<HttpClient>(); services.AddSingleton<IOutput, ConsoleDisplay>();
-            services.AddSingleton<UsbScanner>();
-        }
+    private static void ConfigureServices(ServiceCollection services)
+    {
+        services.AddSingleton<IRegistryBuilder, RegistryBuilder>();
+        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
+        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
+        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, MountedDevicesScanner>();
+        services.AddSingleton<IOutput, ConsoleDisplay>();
+        services.AddSingleton<IOutput, FileOutput>();
+        services.AddSingleton<UsbScanner>();
     }
 }
