@@ -6,7 +6,11 @@ A forensic suite for windows. Aiming for the detecting USB devices
 
 This tool uses the following keys in the registry to determine which USB devices have been connected to the system:
 
+The following sources are currently scanned:
+
 * HKLM\SYSTEM\CurrentControlSet\Enum\USB
+* HKLM\SYSTEM\CurrentControlSet\Enum\USBStor
+* HKLM\SYSTEM\MountedDevices
 
 ## Requirements
 

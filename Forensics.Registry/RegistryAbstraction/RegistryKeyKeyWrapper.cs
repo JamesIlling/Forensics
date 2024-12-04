@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Versioning;
+using System.Security;
 using Microsoft.Win32;
 
 namespace Forensics.Registry.RegistryAbstraction;
@@ -17,13 +18,14 @@ public class RegistryKeyKeyWrapper : IRegistryKey
 
     public IRegistryKey? OpenSubKey(string subKeyName)
     {
-        if (_key != null && _key.GetSubKeyNames().Contains(subKeyName))
+        if (_key != null &&
+            _key.GetSubKeyNames().Contains(subKeyName))
         {
             try
             {
                 return new RegistryKeyKeyWrapper(_key.OpenSubKey(subKeyName));
             }
-            catch (System.Security.SecurityException)
+            catch (SecurityException)
             {
                 return null;
             }
@@ -50,7 +52,6 @@ public class RegistryKeyKeyWrapper : IRegistryKey
                 case RegistryValueKind.Binary:
 
                     return Convert.ToHexString(_key.GetValue(valueName) as byte[] ?? []);
-
             }
         }
 

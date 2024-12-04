@@ -5,8 +5,9 @@ namespace Forensics.Registry.Test.TestDataClasses;
 
 public class UshortTsvFileReader : IEnumerable<object[]>
 {
-    private readonly string _path;
     private readonly int _column;
+    private readonly string _path;
+
     public UshortTsvFileReader(string path, int column)
     {
         _path = path;
@@ -31,5 +32,8 @@ public class UshortTsvFileReader : IEnumerable<object[]>
         }
     }
 
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }

@@ -14,15 +14,16 @@ public class RegistryJsonFileReader : IEnumerable<object[]>
 
     public IEnumerator<object[]> GetEnumerator()
     {
-
         var json = JsonSerializer.Deserialize<RegistryJsonTestFile>(File.ReadAllText(_path));
 
         foreach (var value in json?.ExpectedValues ?? [])
         {
             yield return [json!.Registry.BuildMock(), value.Name, value.Value];
         }
-
     }
 
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }
