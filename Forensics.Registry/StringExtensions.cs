@@ -5,18 +5,18 @@ namespace Forensics.Registry;
 
 public static partial class StringExtensions
 {
-    public static ushort? ParseVendorId(this string? value)
+    public static byte? ParseInterface(this string? value)
     {
         if (value == null)
         {
             return null;
         }
 
-        var match = VendorIdRegex().Match(value);
+        var match = InterfaceRegex().Match(value);
         if (match.Success)
         {
-            var vendorId = match.Groups["vendorId"].Value;
-            return ushort.Parse(vendorId, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+            var interfaceId = match.Groups["interfaceId"].Value;
+            return byte.Parse(interfaceId, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
         }
 
         return null;
@@ -39,23 +39,6 @@ public static partial class StringExtensions
         return null;
     }
 
-    public static byte? ParseInterface(this string? value)
-    {
-        if (value == null)
-        {
-            return null;
-        }
-
-        var match = InterfaceRegex().Match(value);
-        if (match.Success)
-        {
-            var interfaceId = match.Groups["interfaceId"].Value;
-            return byte.Parse(interfaceId, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
-        }
-
-        return null;
-    }
-
     public static ushort? ParseRevision(this string? value)
     {
         if (value == null)
@@ -73,8 +56,22 @@ public static partial class StringExtensions
         return null;
     }
 
-    [GeneratedRegex("REV(_)?(?<revision>[0-9A-F]{4})", RegexOptions.Compiled)]
-    private static partial Regex RevisionRegex();
+    public static ushort? ParseVendorId(this string? value)
+    {
+        if (value == null)
+        {
+            return null;
+        }
+
+        var match = VendorIdRegex().Match(value);
+        if (match.Success)
+        {
+            var vendorId = match.Groups["vendorId"].Value;
+            return ushort.Parse(vendorId, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+        }
+
+        return null;
+    }
 
 
     [GeneratedRegex("MI(_)?(?<interfaceId>[0-9A-F]{2})", RegexOptions.Compiled)]
@@ -82,6 +79,9 @@ public static partial class StringExtensions
 
     [GeneratedRegex("PID(_)?(?<productId>[0-9A-F]{4})", RegexOptions.Compiled)]
     private static partial Regex ProductIdRegex();
+
+    [GeneratedRegex("REV(_)?(?<revision>[0-9A-F]{4})", RegexOptions.Compiled)]
+    private static partial Regex RevisionRegex();
 
     [GeneratedRegex("VID(_)?(?<vendorId>[0-9A-F]{4})", RegexOptions.Compiled)]
     private static partial Regex VendorIdRegex();

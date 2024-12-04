@@ -6,14 +6,13 @@ public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<T
 {
     private readonly List<SourcedKeyValuePair<TKey, TValue>> _data = [];
 
-    public IEnumerator<SourcedKeyValuePair<TKey, TValue>> GetEnumerator()
-    {
-        return _data.GetEnumerator();
-    }
+    public int Count => _data.Count;
+    public bool IsReadOnly => false;
 
-    IEnumerator IEnumerable.GetEnumerator()
+    public void Add(string source, TKey key, TValue? value)
     {
-        return GetEnumerator();
+        var item = new SourcedKeyValuePair<TKey, TValue> { Key = key, Source = source, Value = value };
+        Add(item);
     }
 
     public void Add(SourcedKeyValuePair<TKey, TValue> item)
@@ -62,22 +61,24 @@ public class SourcedDictionary<TKey, TValue> : ICollection<SourcedKeyValuePair<T
     }
 
 
-    public bool Remove(SourcedKeyValuePair<TKey, TValue> item)
-    {
-        return _data.Remove(item);
-    }
-
-    public int Count => _data.Count;
-    public bool IsReadOnly => false;
-
     public TValue? Get(TKey key)
     {
         return _data.Find(x => Equals(x.Key, key))?.Value;
     }
 
-    public void Add(string source, TKey key, TValue? value)
+    public IEnumerator<SourcedKeyValuePair<TKey, TValue>> GetEnumerator()
     {
-        var item = new SourcedKeyValuePair<TKey, TValue> { Key = key, Source = source, Value = value };
-        Add(item);
+        return _data.GetEnumerator();
+    }
+
+
+    public bool Remove(SourcedKeyValuePair<TKey, TValue> item)
+    {
+        return _data.Remove(item);
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

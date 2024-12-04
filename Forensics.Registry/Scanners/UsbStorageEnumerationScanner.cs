@@ -68,6 +68,18 @@ public class UsbStorageEnumerationScanner : IScan<SourcedDictionary<string, stri
         return entries;
     }
 
+    private static void GetDiskId(IRegistryKey deviceKey, SourcedDictionary<string, string?> entry)
+    {
+        var deviceProperties = deviceKey.OpenSubKey(DeviceParameters);
+        var partManager = deviceProperties?.OpenSubKey(PartitionManagerSubKeyName);
+        var diskId = partManager?.GetValue(DiskIdValueName);
+        if (diskId != null &&
+            partManager != null)
+        {
+            entry.Add(partManager.Name, DiskIdProperty, diskId);
+        }
+    }
+
     private IRegistryKey[] GetKeys()
     {
         var keys = new List<IRegistryKey>();
@@ -86,13 +98,5 @@ public class UsbStorageEnumerationScanner : IScan<SourcedDictionary<string, stri
         while (key != null);
 
         return keys.ToArray();
-    }
-
-    private static void GetDiskId(IRegistryKey deviceKey, SourcedDictionary<string, string?> entry)
-    {
-        var deviceProperties = deviceKey.OpenSubKey(DeviceParameters);
-        var partManager = deviceProperties?.OpenSubKey(PartitionManagerSubKeyName)!;
-        var diskId = partManager.GetValue(DiskIdValueName);
-        entry.Add(partManager.Name, DiskIdProperty, diskId);
     }
 }

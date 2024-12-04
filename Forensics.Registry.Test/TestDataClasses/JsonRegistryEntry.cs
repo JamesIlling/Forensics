@@ -11,6 +11,21 @@ public class JsonRegistryEntry
     public required List<JsonRegistryEntry> SubKeys { get; set; }
     public required List<JsonRegistryValue> Values { get; set; }
 
+    public IMock<IRegistryBuilder> BuildMock()
+    {
+        var mocks = new Dictionary<string, IMock<IRegistryKey>>();
+        BuildKey(this, mocks);
+
+
+        var builder = new Mock<IRegistryBuilder>();
+        builder.SetupSequence(x => x.GetRegistry(It.IsAny<string>()))
+            .Returns(mocks[GetShortName(Name)].Object)
+            .Returns(() => null);
+
+
+        return builder;
+    }
+
     private static void BuildKey(JsonRegistryEntry key, Dictionary<string, IMock<IRegistryKey>> keys)
     {
         foreach (var child in key.SubKeys)
@@ -36,21 +51,6 @@ public class JsonRegistryEntry
         }
 
         keys.Add(GetShortName(key.Name), mock);
-    }
-
-    public IMock<IRegistryBuilder> BuildMock()
-    {
-        var mocks = new Dictionary<string, IMock<IRegistryKey>>();
-        BuildKey(this, mocks);
-
-
-        var builder = new Mock<IRegistryBuilder>();
-        builder.SetupSequence(x => x.GetRegistry(It.IsAny<string>()))
-            .Returns(mocks[GetShortName(Name)].Object)
-            .Returns(() => null);
-
-
-        return builder;
     }
 
     private static string GetShortName(string longName)
