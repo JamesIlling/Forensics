@@ -73,8 +73,7 @@ public class UsbStorageEnumerationScanner : IScan<SourcedDictionary<string, stri
         var deviceProperties = deviceKey.OpenSubKey(DeviceParameters);
         var partManager = deviceProperties?.OpenSubKey(PartitionManagerSubKeyName);
         var diskId = partManager?.GetValue(DiskIdValueName);
-        if (diskId != null &&
-            partManager != null)
+        if (partManager != null && diskId != null)
         {
             entry.Add(partManager.Name, DiskIdProperty, diskId);
         }
