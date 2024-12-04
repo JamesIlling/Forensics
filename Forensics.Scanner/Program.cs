@@ -8,6 +8,17 @@ namespace Forensics.Scanner;
 
 internal static class Program
 {
+    private static void ConfigureServices(ServiceCollection services)
+    {
+        services.AddSingleton<IRegistryBuilder, RegistryBuilder>();
+        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
+        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
+        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, MountedDevicesScanner>();
+        services.AddSingleton<IOutput, ConsoleDisplay>();
+        services.AddSingleton<IOutput, FileOutput>();
+        services.AddSingleton<UsbScanner>();
+    }
+
     private static void Main()
     {
         var services = new ServiceCollection();
@@ -22,16 +33,5 @@ internal static class Program
         {
             output.Output(results);
         }
-    }
-
-    private static void ConfigureServices(ServiceCollection services)
-    {
-        services.AddSingleton<IRegistryBuilder, RegistryBuilder>();
-        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
-        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
-        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, MountedDevicesScanner>();
-        services.AddSingleton<IOutput, ConsoleDisplay>();
-        services.AddSingleton<IOutput, FileOutput>();
-        services.AddSingleton<UsbScanner>();
     }
 }

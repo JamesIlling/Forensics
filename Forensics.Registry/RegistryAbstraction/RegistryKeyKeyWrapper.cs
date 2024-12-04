@@ -16,22 +16,10 @@ public class RegistryKeyKeyWrapper : IRegistryKey
 
     public string Name => _key?.Name ?? "";
 
-    public IRegistryKey? OpenSubKey(string subKeyName)
+    [SupportedOSPlatform("windows")]
+    public string[] GetSubKeyNames()
     {
-        if (_key != null &&
-            _key.GetSubKeyNames().Contains(subKeyName))
-        {
-            try
-            {
-                return new RegistryKeyKeyWrapper(_key.OpenSubKey(subKeyName));
-            }
-            catch (SecurityException)
-            {
-                return null;
-            }
-        }
-
-        return null;
+        return _key?.GetSubKeyNames() ?? [];
     }
 
     public string? GetValue(string? valueName)
@@ -58,14 +46,26 @@ public class RegistryKeyKeyWrapper : IRegistryKey
         return null;
     }
 
-    [SupportedOSPlatform("windows")]
-    public string[] GetSubKeyNames()
-    {
-        return _key?.GetSubKeyNames() ?? [];
-    }
-
     public IEnumerable<string> GetValueNames()
     {
         return _key?.GetValueNames() ?? [];
+    }
+
+    public IRegistryKey? OpenSubKey(string subKeyName)
+    {
+        if (_key != null &&
+            _key.GetSubKeyNames().Contains(subKeyName))
+        {
+            try
+            {
+                return new RegistryKeyKeyWrapper(_key.OpenSubKey(subKeyName));
+            }
+            catch (SecurityException)
+            {
+                return null;
+            }
+        }
+
+        return null;
     }
 }
