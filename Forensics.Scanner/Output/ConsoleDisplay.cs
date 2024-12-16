@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using Forensics.Data;
 using Pastel;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Forensics.Scanner.Output;
 
@@ -15,76 +16,60 @@ internal class ConsoleDisplay : IOutput
     private static readonly Color PropertyValueColour = Color.LightGray;
     private static readonly Color ScanDetailsColor = Color.DarkGoldenrod;
 
+    private static void Display(List<SourcedDictionary<string, string?>> dataset, Color propertyColour)
+    {
+        foreach (var device in dataset)
+        {
+            foreach (var property in device.OrderBy(x => x.Key))
+            {
+                Console.WriteLine(
+                    $"{property.Key.Pastel(propertyColour)}: {property.Value.Pastel(PropertyValueColour)} {property.Source.Pastel(SourceColour)}");
+            }
+
+            Console.WriteLine();
+        }
+    }
+    private static void Display(List<SourcedDictionary<string, string?>> dataset, Color propertyColour, int maxLength)
+    {
+        foreach (var volume in dataset)
+        {
+            foreach (var property in volume.OrderBy(x => x.Key))
+            {
+                if (property.Value?.Length < maxLength)
+                {
+                    Console.WriteLine(
+                        $"{property.Key.Pastel(propertyColour)}: {property.Value.Pastel(PropertyValueColour)} {property.Source.Pastel(SourceColour)}");
+                }
+                else
+                {
+                    Console.WriteLine(
+                        $"{property.Key.Pastel(propertyColour)}: <REMOVED> {property.Source.Pastel(SourceColour)}");
+                }
+            }
+
+            Console.WriteLine();
+        }
+    }
+
+
     public void Output(ScanResults data)
     {
         Console.WriteLine($"Scan {data.ComputerName} at {data.Timestamp}".Pastel(ScanDetailsColor));
 
         Console.WriteLine("Currently Attached".Pastel(ScanDetailsColor));
-        foreach (var device in data.CurrentlyAttachedDevices)
-        {
-            foreach (var property in device.OrderBy(x => x.Key))
-            {
-                Console.WriteLine(
-                    $"{property.Key.Pastel(CurrentlyAttachedColour)}: {property.Value.Pastel(PropertyValueColour)} {property.Source.Pastel(SourceColour)}");
-            }
-
-            Console.WriteLine();
-        }
+        Display(data.CurrentlyAttachedDevices, CurrentlyAttachedColour);
 
         Console.WriteLine("Devices".Pastel(ScanDetailsColor));
-        foreach (var device in data.DeviceList)
-        {
-            foreach (var property in device.OrderBy(x => x.Key))
-            {
-                Console.WriteLine(
-                    $"{property.Key.Pastel(PropertyNameColour)}: {property.Value.Pastel(PropertyValueColour)} {property.Source.Pastel(SourceColour)}");
-            }
+        Display(data.DeviceList, PropertyNameColour);
 
-            Console.WriteLine();
-        }
 
         Console.WriteLine("Storage".Pastel(ScanDetailsColor));
-        foreach (var volume in data.StorageList)
-        {
-            foreach (var property in volume.OrderBy(x => x.Key))
-            {
-                Console.WriteLine(
-                    $"{property.Key.Pastel(StoragePropertyNameColour)}: {property.Value.Pastel(PropertyValueColour)} {property.Source.Pastel(SourceColour)}");
-            }
-
-            Console.WriteLine();
-        }
+        Display(data.StorageList, StoragePropertyNameColour);
 
         Console.WriteLine("MountedDevices".Pastel(ScanDetailsColor));
-        foreach (var volume in data.MountedDevices)
-        {
-            foreach (var property in volume.OrderBy(x => x.Key))
-            {
-                Console.WriteLine(
-                    $"{property.Key.Pastel(MountedDevicePropertyNameColour)}: {property.Value.Pastel(PropertyValueColour)} {property.Source.Pastel(SourceColour)}");
-            }
-
-            Console.WriteLine();
-        }
+        Display(data.MountedDevices, MountedDevicePropertyNameColour);
 
         Console.WriteLine("SetupLog".Pastel(ScanDetailsColor));
-        foreach (var volume in data.SetupLogs)
-        {
-            foreach (var property in volume.OrderBy(x => x.Key))
-            {
-                if (property.Value?.Length < 1000)
-                {
-                    Console.WriteLine(
-                        $"{property.Key.Pastel(SetupLogsColour)}: {property.Value.Pastel(PropertyValueColour)} {property.Source.Pastel(SourceColour)}");
-                }
-                else
-                {
-                    Console.WriteLine(
-                        $"{property.Key.Pastel(SetupLogsColour)}: <REMOVED> {property.Source.Pastel(SourceColour)}");
-                }
-            }
-
-            Console.WriteLine();
-        }
+        Display(data.SetupLogs, SetupLogsColour, 1000);
     }
 }
