@@ -1,4 +1,4 @@
-﻿using Forensics.Data;
+using Forensics.Data;
 using Forensics.Registry.Scanners;
 
 namespace Forensics.Scanner;
@@ -25,7 +25,8 @@ internal class UsbScanner
         {
             DeviceList = scannerResults["UsbEnumerationScanner"],
             StorageList = scannerResults["UsbStorageEnumerationScanner"],
-            MountedDevices = scannerResults["MountedDevicesScanner"]
+            MountedDevices = scannerResults["MountedDevicesScanner"],
+            CurrentlyAttachedDevices = scannerResults["CurrentlyAttachedScanner"]
         };
         return results;
     }
