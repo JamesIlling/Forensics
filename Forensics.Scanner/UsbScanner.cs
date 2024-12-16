@@ -1,5 +1,7 @@
+﻿using System.Drawing;
 using Forensics.Data;
 using Forensics.Registry.Scanners;
+using Pastel;
 
 namespace Forensics.Scanner;
 
@@ -17,6 +19,7 @@ internal class UsbScanner
         var scannerResults = new Dictionary<string, List<SourcedDictionary<string, string?>>>();
         foreach (var scanner in _scanners)
         {
+            Console.WriteLine($"Scanning with {scanner.Name}".Pastel(Color.DarkGreen));
             var items = scanner.Scan();
             scannerResults.Add(scanner.Name, items);
         }
@@ -26,7 +29,8 @@ internal class UsbScanner
             DeviceList = scannerResults["UsbEnumerationScanner"],
             StorageList = scannerResults["UsbStorageEnumerationScanner"],
             MountedDevices = scannerResults["MountedDevicesScanner"],
-            CurrentlyAttachedDevices = scannerResults["CurrentlyAttachedScanner"]
+            CurrentlyAttachedDevices = scannerResults["CurrentlyAttachedScanner"],
+            SetupLogs = scannerResults["SetupApiScanner"]
         };
         return results;
     }

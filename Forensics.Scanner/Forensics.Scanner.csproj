@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Forensics.Data\Forensics.Data.csproj" />
     <ProjectReference Include="..\Forensics.Registry\Forensics.Registry.csproj" />
+    <ProjectReference Include="..\Forensics.SetupApi\Forensics.SetupApi.csproj" />
     <ProjectReference Include="..\Forensics.WindowsManagement\Forensics.WindowsManagement.csproj" />
   </ItemGroup>
 

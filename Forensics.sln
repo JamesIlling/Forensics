@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forensics.TestData.Generato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forensics.Data.Test", "Forensics.Data.Test\Forensics.Data.Test.csproj", "{A63B0E0B-18C4-4D3E-92AD-C2B02C1392DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forensics.SetupApi", "Forensics.SetupApi\Forensics.SetupApi.csproj", "{3F25E6DE-2705-4D5B-80AD-180F02254D2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forensics.WindowsManagement", "Forensics.WindowsManagement\Forensics.WindowsManagement.csproj", "{A15AA3E9-58FB-4CEB-85D6-1DE10D207262}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{A63B0E0B-18C4-4D3E-92AD-C2B02C1392DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A63B0E0B-18C4-4D3E-92AD-C2B02C1392DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A63B0E0B-18C4-4D3E-92AD-C2B02C1392DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F25E6DE-2705-4D5B-80AD-180F02254D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F25E6DE-2705-4D5B-80AD-180F02254D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F25E6DE-2705-4D5B-80AD-180F02254D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F25E6DE-2705-4D5B-80AD-180F02254D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15AA3E9-58FB-4CEB-85D6-1DE10D207262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15AA3E9-58FB-4CEB-85D6-1DE10D207262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15AA3E9-58FB-4CEB-85D6-1DE10D207262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15AA3E9-58FB-4CEB-85D6-1DE10D207262}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,7 @@
 using Forensics.Registry.RegistryAbstraction;
 using Forensics.Registry.Scanners;
 using Forensics.Scanner.Output;
+using Forensics.SetupApi;
 using Forensics.WindowsManagement;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,7 @@ internal static class Program
         services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbEnumerationScanner>();
         services.AddSingleton<IScan<SourcedDictionary<string, string?>>, UsbStorageEnumerationScanner>();
         services.AddSingleton<IScan<SourcedDictionary<string, string?>>, MountedDevicesScanner>();
+        services.AddSingleton<IScan<SourcedDictionary<string, string?>>, SetupApiScanner>();
         services.AddSingleton<IScan<SourcedDictionary<string, string?>>, CurrentlyAttachedScanner>();
         services.AddSingleton<IOutput, ConsoleDisplay>();
         services.AddSingleton<IOutput, FileOutput>();

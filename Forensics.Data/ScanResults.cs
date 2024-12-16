@@ -10,4 +10,5 @@ public class ScanResults
     public List<SourcedDictionary<string, string?>> StorageList { get; init; } = [];
     public List<SourcedDictionary<string, string?>> CurrentlyAttachedDevices { get; init; } = [];
     public string Timestamp { get; } = DateTime.UtcNow.ToString(Iso8601);
+    public List<SourcedDictionary<string, string?>> SetupLogs { get; set; } = [];
 }
