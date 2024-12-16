@@ -1,17 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.Reflection.Emit;
-using Forensics.Data;
+﻿using Forensics.Data;
 using Forensics.SetupApi.TokenClassifiers;
-using Pastel;
 
 namespace Forensics.SetupApi;
 
 public class LogParser
 {
 
-    private static readonly List<IClassifier> Classifiers =
+    private readonly List<IClassifier> _classifiers =
     [
         new DeviceInstallLogClassifier(),
         new BeginLogClassifier(),
@@ -32,7 +27,7 @@ public class LogParser
 
         foreach (var token in tokens)
         {
-            var classifier = Classifiers.FirstOrDefault(x => x.TokenType == token.TokenType);
+            var classifier = _classifiers.FirstOrDefault(x => x.TokenType == token.TokenType);
             var searchable = classifier?.Parse(lines, token.StartLineNumber, token.EndLineNumber);
             if (searchable != null && searchable.ContainsUsbInfo())
             {
@@ -42,11 +37,11 @@ public class LogParser
         return entries;
     }
 
-    private static List<Token> Tokenise(List<string> lines)
+    private List<Token> Tokenise(List<string> lines)
     {
         var tokens = new List<Token>();
 
-        foreach (var classifier in Classifiers)
+        foreach (var classifier in _classifiers)
         {
             tokens.AddRange(classifier.Tokenise(lines));
         }
