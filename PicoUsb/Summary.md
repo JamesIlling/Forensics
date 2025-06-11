@@ -7,19 +7,19 @@
 
 Purchased from [Elecrow.com](https://www.elecrow.com/picousb-raspberry-pi-pico-rp2040-powered-bad-usb-rubber-ducky.html)
 
-This is a low cost circuit board only Bad USB device. It is build around Raspberry Pi PR2040(pico). There is a [Github](https://github.com/TomBrlek/PicoUSB), which contains details on how to use the device, and links to other useful resources.
+This is a low cost circuit board Bad USB device, built around Raspberry Pi PR2040(pico). [Github](https://github.com/TomBrlek/PicoUSB) contains details on how to use the device, and links to other useful resources.
 
-This device is technically running python, however the python code that is being run is an interpreter for the simple language used to create an attack.
+This device is technically running python, which is an interpreter for the simple language used to create an attack.
 
 ### Pros and Cons
 
-| Pros                                                                  | Cons                       |
-| :-------------------------------------------------------------------- | :------------------------- |
-| Cheap (~£10)                                                          | Obviously not a normal USB |
-| Easy to setup (walkthrough and [video](https://youtu.be/jKH6WgFiaB0)) | No Case                    |
-| Simple language to write attack                                       |                            |
-| Can interact with mouse and volume as well as keyboard                |                            |
-| No programmer is needed it can be done via USB                        |                            |
+| Pros                                                                  | Cons                     |
+| :-------------------------------------------------------------------- | :----------------------- |
+| Cheap (~£10)                                                          | Not a normal looking USB |
+| Easy to setup (walkthrough and [video](https://youtu.be/jKH6WgFiaB0)) | No Case                  |
+| Simple language to write attack                                       |                          |
+| Can interact with mouse and volume as well as keyboard                |                          |
+| Can be programmed via USB                                             |                          |
 
 #### There are 3D printable cases available
 
@@ -33,7 +33,7 @@ This device is technically running python, however the python code that is being
 
 ## Issues
 
-It is possible to brick the device during setup.
+You brick the device during setup.
 
 ## Detailed investigation
 
@@ -41,7 +41,7 @@ It is possible to brick the device during setup.
 
 1. Download the latest [CircuitPython](https://circuitpython.org/board/raspberry_pi_pico/) for Rasperry Pi Pico.
 2. Insert PicoUSB into your USB drive while holding the "Boot" button. (Opens it in a bootloader mode. The first time you do this you don't have to hold the "Boot" button)
-3. Copy `CircuitPython.uf2` file to the USB and wait for few seconds or a minute for it to finish setting up. (will close and reopen the explorer, be patient)
+3. Copy `CircuitPython.uf2` file to the USB and wait for it to finish setting up. (will close and reopen the explorer, be patient)
 4. Create the payload, following the [example](https://github.com/TomBrlek/PicoUSB/blob/main/src/example.txt).
 
 ```txt
@@ -57,11 +57,9 @@ It is possible to brick the device during setup.
 
 * Inserting the PicoUSB while not holding any buttons will not show as a USB drive and will execute the "bad usb" code found in the pico_usb.txt.
 * Inserting it while holding the "Mode" button will not execute any "bad usb" code and will show as a USB drive. This way you can freely edit the code.
-* If you insert it while holding the "Boot" button, it will open in bootloader mode. This is usually only used the first time the device is set up and never again.
+* If you insert it while holding the "Boot" button, it will open in bootloader mode. This is only used the first time the device is configured and never again.
 
 ### Setup
-
-Having set up the device with the hello world script, they were inserted into the test PC and the registry entries recorded.
 
 ### Registry information
 
@@ -157,7 +155,7 @@ Machine restarted before insertion
 
 #### Notes
 
-The device instance ids are provided from the device, and can be traced accross multiple systems.
+The device instance ids are provided from the device. This allows tracing between computers.
 
 | Device   | Device Serial Number |
 | -------- | -------------------- |
