@@ -19,7 +19,7 @@ This device is technically running python, which is an interpreter for the simpl
 | Easy to setup (walkthrough and [video](https://youtu.be/jKH6WgFiaB0)) | No Case                  |
 | Simple language to write attack                                       |                          |
 | Can interact with mouse and volume as well as keyboard                |                          |
-| Can be programmed via USB                                             |                          |
+| Programmed via USB                                                    |                          |
 
 #### There are 3D printable cases available
 
@@ -57,7 +57,7 @@ You brick the device during setup.
 
 * Inserting the PicoUSB while not holding any buttons will not show as a USB drive and will execute the "bad usb" code found in the pico_usb.txt.
 * Inserting it while holding the "Mode" button will not execute any "bad usb" code and will show as a USB drive. This way you can freely edit the code.
-* If you insert it while holding the "Boot" button, it will open in bootloader mode. This is only used the first time the device is configured and never again.
+* If you insert it while holding the "Boot" button, it will open in bootloader mode. This is used the first time, when configuring the device.
 
 ### Setup
 
@@ -155,7 +155,7 @@ Machine restarted before insertion
 
 #### Notes
 
-The device instance ids are provided from the device. This allows tracing between computers.
+The device instance ids come from the device. This allows tracing between computers.
 
 | Device   | Device Serial Number |
 | -------- | -------------------- |
