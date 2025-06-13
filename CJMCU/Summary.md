@@ -30,7 +30,7 @@ This device does not appear as a USB drive, unlike the [Hackipy](../hackypi/Summ
 ## Issues
 
 * This only supports FAT32 cards
-* This device can not be programmed via the USB connector and requires a SPI connection. The 6 pins at the top left of the image above are a SPI connection.
+* This device requires a SPI connection to program. The 6 pins at the top left of the image above are a SPI connection.
 
 ## Detailed investigation
 
@@ -68,7 +68,7 @@ I selected the board type (Leonardo) and the programmer (USBasp)
 
 I was then able to flash the Atemga processors from the IDE with the Upload via programmer option.
 
-All devices were flashed with [Seytonics Duckduino sketch](https://github.com/Seytonic/Duckduino-microSD/blob/master/Duckduino-microSD/Duckduino-microSD.ino), copied [locally](./Duckduino-microSD/Duckduino-microSD.ino).
+We flashed all devices with [Seytonics Duckduino sketch](https://github.com/Seytonic/Duckduino-microSD/blob/master/Duckduino-microSD/Duckduino-microSD.ino), copied [locally](./Duckduino-microSD/Duckduino-microSD.ino).
 
 I restored the base image of the test PC between insertions using [RebootRestore RX](https://horizondatasys.com/reboot-restore-standard/)
 
