@@ -153,4 +153,4 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 
 #### Notes
 
-There is only device id used which is HIDPC. The device is not uniquely identifiable on a single PC nor across systems.
+There is one device id used (HIDPC). The device is not uniquely identifiable on a single PC nor across systems.
