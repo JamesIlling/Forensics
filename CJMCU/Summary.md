@@ -153,5 +153,4 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 
 #### Notes
 
-The DeviceInstanceIds are Windows generated so whilst consistant across a single PC,we can not track them across multiple PCs.
-If resetarted with a deep freeze project it is impossible to tell the devices apart!.
+There is only device id used which is HIDPC. The device is not uniquely identifiable on a single PC nor across systems.
