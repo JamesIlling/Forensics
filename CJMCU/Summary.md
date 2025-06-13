@@ -4,15 +4,15 @@
 
 ## Introduction
 
-This is a low cost circuit board only Bad USB device. It is based on a [Leonardo Arduino](https://docs.arduino.cc/hardware/leonardo/) combined with a MicroSd card reader. An example info on how to set it up as a ["RubberDucky"](https://shop.hak5.org/products/usb-rubber-ducky) clone can be found [here](https://github.com/asciiterminal/CJMCU_ATMEGA32U4_BADUSB), or [here](https://github.com/Seytonic/Duckduino-microSD).This uses the Arduino IDE to flash the Atmel Atmega32U4 to read code from the SD and then execute.
+This is a low cost circuit board Bad USB device based on a [Leonardo Arduino](https://docs.arduino.cc/hardware/leonardo/) combined with a MicroSd card reader. An example info on how to set it up as a ["RubberDucky"](https://shop.hak5.org/products/usb-rubber-ducky) clone found [here](https://github.com/asciiterminal/CJMCU_ATMEGA32U4_BADUSB), or [here](https://github.com/Seytonic/Duckduino-microSD).This uses the Arduino IDE to flash the Atmel Atmega32U4 to read code from the SD and then execute.
 
-This device does not appear as a USB drive, unlike the [Hackipy](../hackypi/Summary.md) which means that it is less likely to be blocked.
+This device does not appear as a USB drive, unlike the [Hackipy](../hackypi/Summary.md).
 
 ### Pros and Cons
 
 | Pros                                                     | Cons                                                          |
 | :------------------------------------------------------- | :------------------------------------------------------------ |
-| Cheap (~£15)                                             | Obviously not a normal USB                                    |
+| Cheap (~£15)                                             | Not a normal USB device                                       |
 | Good training device for switching to a RuberDucky later | Limited to Keystroke Injection Attack (subset of Duckyscript) |
 |                                                          | No Case                                                       |
 |                                                          | No instructions                                               |
@@ -30,13 +30,11 @@ This device does not appear as a USB drive, unlike the [Hackipy](../hackypi/Summ
 ## Issues
 
 * This only supports FAT32 cards
-* Frequently these devices can not be programmed via thier USB connector and will require a SPI connection. The 6 pins at the top left of the image above are a SPI connection.
+* This device can not be programmed via the USB connector and requires a SPI connection. The 6 pins at the top left of the image above are a SPI connection.
 
 ## Detailed investigation
 
 ### Creating an attack
-
-This was relatively simple once I had a look at the Arduino sketch.
 
 1. I formatted the SD card to FAT32 (32gb microSD).
 2. Create a hello world [DuckyScript](https://docs.hak5.org/hak5-usb-rubber-ducky/duckyscript-tm-quick-reference)
@@ -64,15 +62,15 @@ I connected the [6 pin Clips](https://www.amazon.co.uk/dp/B0DXFC9B2H) to the boa
 | SCK                | SCK          | Serial Clock                |
 | MISO               | MI           | Master In Slave Out         |
 
-I then connected the [USBasp Programmer with ISP Adapter](https://www.amazon.co.uk/dp/B07Y3B8H91) and use [zadig](https://zadig.akeo.ie/) to connect it to the [libusbK](https://libusbk.sourceforge.net/UsbK3/) driver in Windows 10, which is needed by the [Arduino IDE](https://www.arduino.cc/en/software/).
+I then connected the [USBasp Programmer with ISP Adapter](https://www.amazon.co.uk/dp/B07Y3B8H91) and use [zadig](https://zadig.akeo.ie/) to connect it to the [libusbK](https://libusbk.sourceforge.net/UsbK3/) driver in Windows 10, which [Arduino IDE](https://www.arduino.cc/en/software/) needs.
 
 I selected the board type (Leonardo) and the programmer (USBasp)
 
 I was then able to flash the Atemga processors from the IDE with the Upload via programmer option.
 
-All devices were successfully flashed with [Seytonics Duckduino sketch](https://github.com/Seytonic/Duckduino-microSD/blob/master/Duckduino-microSD/Duckduino-microSD.ino), copied [locally](./Duckduino-microSD/Duckduino-microSD.ino).
+All devices were flashed with [Seytonics Duckduino sketch](https://github.com/Seytonic/Duckduino-microSD/blob/master/Duckduino-microSD/Duckduino-microSD.ino), copied [locally](./Duckduino-microSD/Duckduino-microSD.ino).
 
-Test machine was restored to base image between insertions using [RebootRestore RX](https://horizondatasys.com/reboot-restore-standard/)
+I restored the base image of the test PC between insertions using [RebootRestore RX](https://horizondatasys.com/reboot-restore-standard/)
 
 ### Registry information from creation
 
@@ -93,8 +91,6 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 [Amazon](https://www.amazon.co.uk/dp/B09QGZ31M4)
 
 ![Device1](img/Device1.jpg)
-
-This was the only device that I could flash via the USB connector
 
 ##### Registry Entries for Device 1
 
@@ -162,5 +158,5 @@ This was the only device that I could flash via the USB connector
 
 #### Notes
 
-The DeviceInstanceIds are Windows generated so whilst consistant across a single PC it is not trackable across multiple PCs.
-If resetarted with a deep freeze project it is impossible to tell the devices apart!
+The DeviceInstanceIds are Windows generated so whilst consistant across a single PC,we can not track them across multiple PCs.
+If resetarted with a deep freeze project it is impossible to tell the devices apart!.
