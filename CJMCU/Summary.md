@@ -84,7 +84,6 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | --------- | ---------- | ------------------------------- |
 | 0x2341    | 0x0036     | Arduino Leonardo BootLoader     |
 | 0x2341    | 0x8036     | Arduino Leonardo (CDC ACM, HID) |
-|           |            |                                 |
 
 #### Device 1
 
@@ -103,7 +102,6 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
-|           |            |           |                        |                                 |                                                                                            |
 
 #### Device 2
 
@@ -120,7 +118,6 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
-|           |            |           |                        |                                 |                                                                                            |
 
 #### Device 3
 
@@ -137,7 +134,6 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
-|           |            |           |                        |                                 |                                                                                            |
 
 #### Device 4
 
@@ -154,7 +150,6 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
-|           |            |           |                        |                                 |                                                                                            |
 
 #### Notes
 
