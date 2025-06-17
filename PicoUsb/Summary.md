@@ -95,7 +95,6 @@ This is a Raspbery pi Pico under the hood so we expect (Values taken from [the s
 | 0x2E8A    | 0x0003     |           | Root Device             | ParentIdPrefix="6&22cf742d&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2E8A&PID_0003\E0C9125B0D9B            |
 | 0x2E8A    | 0x0003     | 00        | USB Mass Storage Device |                               | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2E8A&PID_0003&MI_00\6&22cf742d&0&0000 |
 | 0x2E8A    | 0x0003     | 01        | RP2 Boot                |                               | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2E8A&PID_0003&MI_01\6&22cf742d&0&0001 |
-|           |            |           |                         |                               |                                                                                            |
 
 | Vendor id | Product Id | Revision | Description        | Notes | Keys                                                                                                         |
 | --------- | ---------- | -------- | ------------------ | ----- | ------------------------------------------------------------------------------------------------------------ |
@@ -124,7 +123,6 @@ Machine restarted before insertion
 | 0x239A    | 0x80F4     | 00        | USB Serial Device   |                               | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_239A&PID_80F4&MI_00\6&285546c3&0&0000 |
 | 0x239A    | 0x80F4     | 02        | USB Input Device    |                               | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_239A&PID_80F4&MI_02\6&285546c3&0&0002 |
 | 0x239A    | 0x80F4     | 03        | CircuitPython Audio |                               | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_239A&PID_80F4&MI_03\6&285546c3&0&0003 |
-|           |            |           |                     |                               |                                                                                            |
 
 #### Device 4
 
@@ -138,7 +136,6 @@ Machine restarted before insertion
 | 0x239A    | 0x80F4     | 00        | USB Serial Device   |                                | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_239A&PID_80F4&MI_00\6&831d513&0&0000 |
 | 0x239A    | 0x80F4     | 02        | USB Input Device    |                                | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_239A&PID_80F4&MI_02\6&831d513&0&0002 |
 | 0x239A    | 0x80F4     | 03        | CircuitPython Audio |                                | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_239A&PID_80F4&MI_03\6&831d513&0&0003 |
-|           |            |           |                     |                                |                                                                                           |
 
 #### Device 5
 

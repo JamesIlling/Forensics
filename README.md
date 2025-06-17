@@ -1,5 +1,6 @@
 # Forensics
 
 * [CJMCU Atmega32U4 BadUSB](CJMCU/Summary.md)
-* [Hailege Beetle](Beetle/Summary.md)
+* [CJMCU Beetle](CJMCU Beetle/Summary.md)
+* [Hailege Beetle](Hailege Beetle/Summary.md)
 * [PicoUsb](PicoUsb/Summary.md)

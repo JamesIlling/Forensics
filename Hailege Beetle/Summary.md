@@ -10,7 +10,7 @@ Devices puchased from [Amazon](https://www.amazon.co.uk/dp/B07X93F42G).
 This is a low cost Bad USB device, based on a [Micro Arduino](https://docs.arduino.cc/hardware/micro/).
 
 * There are some GitHub projects to help [jimididit](https://github.com/jimididit/badusb-beetle)
-* There is anouther project to convert Ducky Script to arduino code.
+* There is another project to convert Ducky Script to arduino code.
     * [Duckuino](https://d4n5h.github.io/Duckuino/).
     * [Duckuino Site](https://dukweeno.github.io/Duckuino/), [Github](https://github.com/Dukweeno/Duckuino)
 
@@ -22,7 +22,6 @@ This device does not appear as a USB drive.
 | :-------------------- | :-------------------- |
 | Cheap (~£11)          | No Instructions       |
 | Looks like a USB disk | Programmed in C / C++ |
-|                       |                       |
 
 ### Uses
 
