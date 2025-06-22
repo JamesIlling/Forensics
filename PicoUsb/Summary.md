@@ -44,11 +44,11 @@ You brick the device during setup.
 3. Copy `CircuitPython.uf2` file to the USB and wait for it to finish setting up. (will close and reopen the explorer, be patient)
 4. Create the payload, following the [example](https://github.com/TomBrlek/PicoUSB/blob/main/src/example.txt).
 
-```txt
-    delay(4)
-    write(Hello, World!)
-    press(enter)
-```
+    ```txt
+        delay(4)
+        write(Hello, World!)
+        press(enter)
+    ```
 
 5. Copy the src folder of the [repo](https://github.com/TomBrlek/PicoUSB/tree/main/src) to the USB device.
 6. Save the script as `pico_usb.txt` on the USB device via explorer.

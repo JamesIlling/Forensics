@@ -11,8 +11,8 @@ This is a low cost Bad USB device, based on a [Micro Arduino](https://docs.ardui
 
 * There are some GitHub projects to help [jimididit](https://github.com/jimididit/badusb-beetle)
 * There is another project to convert Ducky Script to arduino code.
-    * [Duckuino](https://d4n5h.github.io/Duckuino/).
-    * [Duckuino Site](https://dukweeno.github.io/Duckuino/), [Github](https://github.com/Dukweeno/Duckuino)
+  * [Duckuino](https://d4n5h.github.io/Duckuino/).
+  * [Duckuino Site](https://dukweeno.github.io/Duckuino/), [Github](https://github.com/Dukweeno/Duckuino)
 
 This device does not appear as a USB drive.
 
