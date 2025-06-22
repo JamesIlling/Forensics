@@ -49,7 +49,7 @@ This device does not appear as a USB drive, unlike the [Hackipy](../hackypi/Summ
 
 ### Setup
 
-I ordered 4 of these devices. I was able to program a single device via its USB connector using the Arduino UI, I suspect more by fluke than intention. I then noticed that the 6 top pins match a 6 pin SPI (Serial Preripheral Interface) ISP (In-System Programmer).
+I ordered 5 of these devices. I was able to program two device via its USB connector using the Arduino UI. I then noticed that the 6 top pins match a 6 pin SPI (Serial Preripheral Interface) ISP (In-System Programmer).
 
 I connected the [6 pin Clips](https://www.amazon.co.uk/dp/B0DXFC9B2H) to the board and wired it to the [USBasp Programmer with ISP Adapter](https://www.amazon.co.uk/dp/B07Y3B8H91)'s SPI board using the [Dupont Wires](https://www.amazon.co.uk/dp/B01EV70C78).
 
@@ -68,7 +68,7 @@ I selected the board type (Leonardo) and the programmer (USBasp)
 
 I was then able to flash the Atemga processors from the IDE with the Upload via programmer option.
 
-We flashed all devices with [Seytonics Duckduino sketch](https://github.com/Seytonic/Duckduino-microSD/blob/master/Duckduino-microSD/Duckduino-microSD.ino), copied [locally](./Duckduino-microSD/Duckduino-microSD.ino).
+I flashed all devices with [Seytonics Duckduino sketch](https://github.com/Seytonic/Duckduino-microSD/blob/master/Duckduino-microSD/Duckduino-microSD.ino), copied [locally](./Duckduino-microSD/Duckduino-microSD.ino).
 
 I restored the base image of the test PC between insertions using [RebootRestore RX](https://horizondatasys.com/reboot-restore-standard/)
 
@@ -87,6 +87,8 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 
 #### Device 1
 
+This device was programmable via USB
+
 [Amazon](https://www.amazon.co.uk/dp/B09QGZ31M4)
 
 ![Device1](img/Device1.jpg)
@@ -101,7 +103,7 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x00      | USB Serial             | USB serial COM Port             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
-| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
+| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8036&MI_02\7&8a23793&0&0000  |
 
 #### Device 2
 
@@ -117,7 +119,7 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x00      | USB Serial             | USB serial COM Port             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
-| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
+| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8036&MI_02\7&8a23793&0&0000  |
 
 #### Device 3
 
@@ -133,7 +135,7 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x00      | USB Serial             | USB serial COM Port             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
-| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
+| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8036&MI_02\7&8a23793&0&0000  |
 
 #### Device 4
 
@@ -149,7 +151,25 @@ Values taken from [DeviceHunt](https://devicehunt.com/view/type/usb/vendor/2341#
 | 0x2341    | 0x8036     | 0x00      | USB Serial             | USB serial COM Port             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
 | 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
-| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000  |
+| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8036&MI_02\7&8a23793&0&0000  |
+
+#### Device 5
+
+This device was programmable via USB
+
+[Amazon](https://www.amazon.co.uk/dp/B0778HVZK6)
+
+![Device5](img/Device5.jpg)
+
+##### Registry Entries for Device 5
+
+| Vendor id | Product Id | Interface | Description            | Notes                           | Keys                                                                                       |
+| --------- | ---------- | --------- | ---------------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
+| 0x2341    | 0x8036     |           | Root Device            | "ParentIdPrefix"="6&1b780c72&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036\HIDPC                   |
+| 0x2341    | 0x8036     | 0x00      | USB Serial             | USB serial COM Port             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
+| 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
+| 0x2341    | 0x8036     | 0x02      | Human Interface Device | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
+| 0x2341    | 0x8036     | 0x02      | Human Interface Device | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8036&MI_02\7&8a23793&0&0000  |
 
 #### Notes
 
