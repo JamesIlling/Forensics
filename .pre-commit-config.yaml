@@ -1,6 +1,17 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
+-   repo: local
+    hooks:
+    -   id: empty-table-rows
+        name: empty table rows
+        description: 'Detect empty markdown table rows'
+        entry: 'uv run file.py'
+        language: python
+        types: [markdown]      
+        pass_filenames: true
+        stages: [pre-commit]
+        args: [ ]    
 -   repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.41.0    
     hooks:
