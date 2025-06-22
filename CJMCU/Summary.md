@@ -39,11 +39,11 @@ This device does not appear as a USB drive, unlike the [Hackipy](../hackypi/Summ
 1. I formatted the SD card to FAT32 (32gb microSD).
 2. Create a hello world [DuckyScript](https://docs.hak5.org/hak5-usb-rubber-ducky/duckyscript-tm-quick-reference)
 
-```DuckyScript
-  DELAY 3000
-  STRING Hello, World!
-  ENTER
- ```
+    ```DuckyScript
+      DELAY 3000
+      STRING Hello, World!
+      ENTER
+    ```
 
 3. Save the script as `script.txt`onto the microSD card.
 

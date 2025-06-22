@@ -69,7 +69,6 @@ Detection under windows:
 | 0x16C0    | 0x27DB     |           | USB Input Device | "ParentIdPrefix"="6&38bdc472&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_16C0&PID_27DB\5&1d69338f&0&1    |
 | 0x16D0    | 0x0753     |           |                  | No service or further info      | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_16D0&PID_0753\5&1d69338f&0&1    |
 | 0x16C0    | 0x27DB     |           |                  | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_16C0&PID_27DB\6&38bdc472&0&0000 |
-|           |            |           |                  |                                 |                                                                                      |
 
 ## Device Findings
 
@@ -79,4 +78,3 @@ The device following device:
 | --------- | ---------- | -------------------------- |
 | 0x16C0    | 0x0753     | Digistump DigiSpark        |
 | 0x16D0    | 0x27DB     | MCS Electronics ‐ OBSOLETE |
-|           |            |                            |
