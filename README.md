@@ -4,3 +4,4 @@
 * [CJMCU Beetle](CJMCU Beetle/Summary.md)
 * [Hailege Beetle](Hailege Beetle/Summary.md)
 * [PicoUsb](PicoUsb/Summary.md)
+* [BadUsb Cable](BadUsbCable/Summary.md)
