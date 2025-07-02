@@ -98,61 +98,56 @@ This is a Arduino Micro under the hood so we should expect
 
 ##### Registry Entries for Device 1
 
-| Vendor id | Product Id | Interface | Description                 | Notes                          | Keys                                                                                      |
-| --------- | ---------- | --------- | --------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------- |
-| 0x2341    | 0x8037     |           | RootDevice                  | "ParentIdPrefix"="6&62fe806&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037\HIDPC                  |
-| 0x2341    | 0x8037     | 0x00      | USB Serial                  | USB serial COM Port            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
-| 0x2341    | 0x8037     | 0x01      | Does Not appear in registry |                                |                                                                                           |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | "ParentIdPrefix"="7&8a23793&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | HID Keyboard Device            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
+| VendorId | ProductId | Interface | Description          | Notes                       | Keys                                                                            |
+| -------- | --------- | --------- | -------------------- | --------------------------- | ------------------------------------------------------------------------------- |
+| 0x2341   | 0x8037    |           | USB Composite Device | ParentIdPrefix: 6&62fe806&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037\HIDPC                  |
+| 0x2341   | 0x8037    | 0x00      | USB Serial Device    |                             | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
+| 0x2341   | 0x8037    | 0x02      | USB Input Device     | ParentIdPrefix: 7&8a23793&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
+| 0x2341   | 0x8037    | 0x02      | HID Keyboard Device  |                             | HKLM\System\CurrentControlSet\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
 
 #### Device 2
 
 ##### Registry Entries for Device 2
 
-| Vendor id | Product Id | Interface | Description                 | Notes                          | Keys                                                                                      |
-| --------- | ---------- | --------- | --------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------- |
-| 0x2341    | 0x8037     |           | RootDevice                  | "ParentIdPrefix"="6&62fe806&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037\HIDPC                  |
-| 0x2341    | 0x8037     | 0x00      | USB Serial                  | USB serial COM Port            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
-| 0x2341    | 0x8037     | 0x01      | Does Not appear in registry |                                |                                                                                           |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | "ParentIdPrefix"="7&8a23793&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | HID Keyboard Device            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
+| VendorId | ProductId | Interface | Description          | Notes                       | Keys                                                                            |
+| -------- | --------- | --------- | -------------------- | --------------------------- | ------------------------------------------------------------------------------- |
+| 0x2341   | 0x8037    |           | USB Composite Device | ParentIdPrefix: 6&62fe806&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037\HIDPC                  |
+| 0x2341   | 0x8037    | 0x00      | USB Serial Device    |                             | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
+| 0x2341   | 0x8037    | 0x02      | USB Input Device     | ParentIdPrefix: 7&8a23793&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
+| 0x2341   | 0x8037    | 0x02      | HID Keyboard Device  |                             | HKLM\System\CurrentControlSet\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
 
 #### Device 3
 
 ##### Registry Entries for Device 3
 
-| Vendor id | Product Id | Interface | Description                 | Notes                          | Keys                                                                                      |
-| --------- | ---------- | --------- | --------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------- |
-| 0x2341    | 0x8037     |           | RootDevice                  | "ParentIdPrefix"="6&62fe806&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037\HIDPC                  |
-| 0x2341    | 0x8037     | 0x00      | USB Serial                  | USB serial COM Port            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
-| 0x2341    | 0x8037     | 0x01      | Does Not appear in registry |                                |                                                                                           |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | "ParentIdPrefix"="7&8a23793&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | HID Keyboard Device            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
+| VendorId | ProductId | Interface | Description          | Notes                       | Keys                                                                            |
+| -------- | --------- | --------- | -------------------- | --------------------------- | ------------------------------------------------------------------------------- |
+| 0x2341   | 0x8037    |           | USB Composite Device | ParentIdPrefix: 6&62fe806&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037\HIDPC                  |
+| 0x2341   | 0x8037    | 0x00      | USB Serial Device    |                             | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
+| 0x2341   | 0x8037    | 0x02      | USB Input Device     | ParentIdPrefix: 7&8a23793&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
+| 0x2341   | 0x8037    | 0x02      | HID Keyboard Device  |                             | HKLM\System\CurrentControlSet\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
 
 #### Device 4
 
 ##### Registry Entries for Device 4
 
-| Vendor id | Product Id | Interface | Description                 | Notes                          | Keys                                                                                      |
-| --------- | ---------- | --------- | --------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------- |
-| 0x2341    | 0x8037     |           | RootDevice                  | "ParentIdPrefix"="6&62fe806&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037\HIDPC                  |
-| 0x2341    | 0x8037     | 0x00      | USB Serial                  | USB serial COM Port            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
-| 0x2341    | 0x8037     | 0x01      | Does Not appear in registry |                                |                                                                                           |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | "ParentIdPrefix"="7&8a23793&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | HID Keyboard Device            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
+| VendorId | ProductId | Interface | Description          | Notes                       | Keys                                                                            |
+| -------- | --------- | --------- | -------------------- | --------------------------- | ------------------------------------------------------------------------------- |
+| 0x2341   | 0x8037    |           | USB Composite Device | ParentIdPrefix: 6&62fe806&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037\HIDPC                  |
+| 0x2341   | 0x8037    | 0x00      | USB Serial Device    |                             | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
+| 0x2341   | 0x8037    | 0x02      | USB Input Device     | ParentIdPrefix: 7&8a23793&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
+| 0x2341   | 0x8037    | 0x02      | HID Keyboard Device  |                             | HKLM\System\CurrentControlSet\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
 
 #### Device 5
 
 ##### Registry Entries for Device 5
 
-| Vendor id | Product Id | Interface | Description                 | Notes                          | Keys                                                                                      |
-| --------- | ---------- | --------- | --------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------- |
-| 0x2341    | 0x8037     |           | RootDevice                  | "ParentIdPrefix"="6&62fe806&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037\HIDPC                  |
-| 0x2341    | 0x8037     | 0x00      | USB Serial                  | USB serial COM Port            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
-| 0x2341    | 0x8037     | 0x01      | Does Not appear in registry |                                |                                                                                           |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | "ParentIdPrefix"="7&8a23793&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
-| 0x2341    | 0x8037     | 0x02      | Human Interface Device      | HID Keyboard Device            | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
+| VendorId | ProductId | Interface | Description          | Notes                       | Keys                                                                            |
+| -------- | --------- | --------- | -------------------- | --------------------------- | ------------------------------------------------------------------------------- |
+| 0x2341   | 0x8037    |           | USB Composite Device | ParentIdPrefix: 6&62fe806&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037\HIDPC                  |
+| 0x2341   | 0x8037    | 0x00      | USB Serial Device    |                             | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_00\6&62fe806&0&0000 |
+| 0x2341   | 0x8037    | 0x02      | USB Input Device     | ParentIdPrefix: 7&8a23793&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8037&MI_02\6&62fe806&0&0002 |
+| 0x2341   | 0x8037    | 0x02      | HID Keyboard Device  |                             | HKLM\System\CurrentControlSet\Enum\HID\VID_2341&PID_8037&MI_02\7&8a23793&0&0000 |
 
 #### Notes
 

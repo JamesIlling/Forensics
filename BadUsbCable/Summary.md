@@ -64,17 +64,21 @@ Detection under windows:
 
 ##### Registry Entries for Device 1
 
-| Vendor id | Product Id | Interface | Description      | Notes                           | Keys                                                                                 |
-| --------- | ---------- | --------- | ---------------- | ------------------------------- | ------------------------------------------------------------------------------------ |
-| 0x16C0    | 0x27DB     |           | USB Input Device | "ParentIdPrefix"="6&38bdc472&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_16C0&PID_27DB\5&1d69338f&0&1    |
-| 0x16D0    | 0x0753     |           |                  | No service or further info      | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_16D0&PID_0753\5&1d69338f&0&1    |
-| 0x16C0    | 0x27DB     |           |                  | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_16C0&PID_27DB\6&38bdc472&0&0000 |
+| VendorId | ProductId | Interface | Description         | Notes                        | Keys                                                                       |
+| -------- | --------- | --------- | ------------------- | ---------------------------- | -------------------------------------------------------------------------- |
+| 0x16C0   | 0x27DB    |           | USB Input Device    | ParentIdPrefix: 6&38bdc472&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_16C0&PID_27DB\5&1d69338f&0&1    |
+| 0x16C0   | 0x27DB    |           | HID Keyboard Device |                              | HKLM\System\CurrentControlSet\Enum\HID\VID_16C0&PID_27DB\6&38bdc472&0&0000 |
+| 0x16D0   | 0x0753    |           |                     |                              | HKLM\System\CurrentControlSet\Enum\USB\VID_16D0&PID_0753\5&1d69338f&0&1    |
 
 ## Device Findings
 
 The device following device:
 
-| Vendor id | Product Id | Information                |
-| --------- | ---------- | -------------------------- |
-| 0x16C0    | 0x0753     | Digistump DigiSpark        |
-| 0x16D0    | 0x27DB     | MCS Electronics ‐ OBSOLETE |
+| Vendor id | Product Id | Information                                       |
+| --------- | ---------- | ------------------------------------------------- |
+| 0x16D0    | 0x0753     | Digistump DigiSpark (Pid sold by MCS Electronics) |
+| 0x16C0    | 0x27DB     | Van Ooijen Technische Informatica Keyboard        |
+
+The findings for this device match the [Digispark V3](../Digispark//Summary.md).
+
+These devices are not traceable across a network as they have windows generated ids.
