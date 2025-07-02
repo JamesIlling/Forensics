@@ -1,7 +1,7 @@
 # Investigation summary
 
-[Digispark](./img/Overview.jpg)
-[Close up](./img/Device-1.jpg)
+![Digispark](./img/Overview.jpg)
+![Close up](./img/Device-1.jpg)
 
 ## Introduction
 
