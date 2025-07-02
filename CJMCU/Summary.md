@@ -95,10 +95,12 @@ This device was programmable via USB
 
 ##### Registry Entries for Device 1
 
+| Vendor id | Product Id | Interface | Description            | Notes             | Keys                                                                              |
+| --------- | ---------- | --------- | ---------------------- | ----------------- | --------------------------------------------------------------------------------- |
+| 0x2341    | 0x0036     |           | Bootloader Root Device | USB Serial Device | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_0036\5&1d69338f&0&1 |
+
 | Vendor id | Product Id | Interface | Description            | Notes                           | Keys                                                                                       |
 | --------- | ---------- | --------- | ---------------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
-| 0x2341    | 0x0036     |           | Bootloader Root Device | USB Serial Device               | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_0036\5&1d69338f&0&1          |
-|           |            |           |                        |                                 |                                                                                            |
 | 0x2341    | 0x8036     |           | Root Device            | "ParentIdPrefix"="6&1b780c72&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036\HIDPC                   |
 | 0x2341    | 0x8036     | 0x00      | USB Serial             | USB serial COM Port             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
 | 0x2341    | 0x8036     | 0x01      |                        | Does Not appear in registry     |                                                                                            |
