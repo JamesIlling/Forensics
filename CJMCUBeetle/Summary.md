@@ -103,13 +103,12 @@ This is a Arduino Leonardo under the hood so we should expect
 
 ![Device 1](img/Device1.jpg)
 
-| Vendor id | Product Id | Interface | Description                 | Notes                           | Keys                                                                                       |
-| --------- | ---------- | --------- | --------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
-| 0x2341    | 0x8036     |           | RootDevice                  | "ParentIdPrefix"="6&1b780c72&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036\HIDPC                   |
-| 0x2341    | 0x8036     | 0x00      | USB Serial                  | USB serial COM Port             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
-| 0x2341    | 0x8036     | 0x01      | Does Not appear in registry |                                 |                                                                                            |
-| 0x2341    | 0x8036     | 0x02      | Human Interface Device      | "ParentIdPrefix"="7&155d1953&0" | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
-| 0x2341    | 0x8036     | 0x02      | Human Interface Device      | HID Keyboard Device             | HKEY_LOCAL_MACHINE\System\ControlSet001\Enum\HID\VID_2341&PID_8036&MI_02\7&155d1953&0&0000 |
+| VendorId | ProductId | Interface | Description          | Notes                        | Keys                                                                             |
+| -------- | --------- | --------- | -------------------- | ---------------------------- | -------------------------------------------------------------------------------- |
+| 0x2341   | 0x8036    |           | USB Composite Device | ParentIdPrefix: 6&1b780c72&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8036\HIDPC                   |
+| 0x2341   | 0x8036    | 0x00      | USB Serial Device    |                              | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8036&MI_00\6&1b780c72&0&0000 |
+| 0x2341   | 0x8036    | 0x02      | USB Input Device     | ParentIdPrefix: 7&155d1953&0 | HKLM\System\CurrentControlSet\Enum\USB\VID_2341&PID_8036&MI_02\6&1b780c72&0&0002 |
+| 0x2341   | 0x8036    | 0x02      | HID Keyboard Device  |                              | HKLM\System\CurrentControlSet\Enum\HID\VID_2341&PID_8036&MI_02\7&155d1953&0&0000 |
 
 #### Notes
 
